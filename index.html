@@ -61,212 +61,149 @@
         .compact-th {
             padding: 0.5rem 0.75rem;
         }
+
+        /* ---------- WINDOWS 10 PROXIMITY HOVER SYSTEM ---------- */
+
+        /* Cursor glow */
+        .cursor-glow {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            pointer-events: none;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0));
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            mix-blend-mode: screen;
+        }
+
+        /* Proximity outline */
+        .win10-prox {
+            position: relative;
+            transition: outline 0.15s ease, outline-offset 0.15s ease;
+            outline: solid 0px rgba(255, 255, 255, 0);
+            outline-offset: 3px;
+        }
     </style>
 </head>
 <body>
 
-<div class="sheet-container">
-    <header class="text-center mb-8">
-        <h1 class="text-5xl font-extrabold text-indigo-400 header-title">
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<div class="sheet-container win10-prox">
+    <header class="text-center mb-8 win10-prox">
+        <h1 class="text-5xl font-extrabold text-indigo-400 header-title win10-prox">
             <span class="text-yellow-400">Nico's</span> GFX Commission Sheet
         </h1>
-        <p class="text-lg text-gray-400 mt-2">
+        <p class="text-lg text-gray-400 mt-2 win10-prox">
             Status: <span class="font-bold text-green-400">OPEN</span> for Commissions | Software Used: Roblox Studio & PhotoPea
         </p>
     </header>
 
     <div class="w-full mb-8 grid grid-cols-2 sm:grid-cols-4 gap-3 p-1 bg-gray-800 rounded-xl shadow-2xl border border-gray-700">
-        <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="GFX Sample 1" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
-        <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="GFX Sample 2" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
-        <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="GFX Sample 3" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
-        <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="GFX Sample 4" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
+        <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" class="win10-prox w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
+        <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" class="win10-prox w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
+        <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" class="win10-prox w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
+        <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" class="win10-prox w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
     </div>
 
     <div class="grid grid-cols-3 gap-8 mb-10">
-        <section class="col-span-2">
-            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+        <section class="col-span-2 win10-prox">
+            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center win10-prox">
                 Services & Pricing (Robux R$)
             </h2>
-            <div class="overflow-x-auto rounded-lg shadow-lg">
-                <table class="min-w-full text-sm text-left text-gray-300">
+            <div class="overflow-x-auto rounded-lg shadow-lg win10-prox">
+                <table class="min-w-full text-sm text-left text-gray-300 win10-prox">
                     <thead class="text-xs uppercase table-header">
                         <tr>
-                            <th scope="col" class="compact-th">Service</th>
-                            <th scope="col" class="compact-th">Description</th>
-                            <th scope="col" class="compact-th">Price (R$)</th>
-                            <th scope="col" class="compact-th">Time</th>
+                            <th class="compact-th win10-prox">Service</th>
+                            <th class="compact-th win10-prox">Description</th>
+                            <th class="compact-th win10-prox">Price (R$)</th>
+                            <th class="compact-th win10-prox">Time</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <th scope="row" class="compact-th font-medium text-yellow-300 whitespace-nowrap">PFP - Headshot</th>
-                            <td class="compact-td">Head and shoulders, basic pose/lighting.</td>
-                            <td class="compact-td"><span class="price-tag-negotiable">From 10 R$ (Negotiable)</span></td>
-                            <td class="compact-td text-xs">Some hours</td>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700 win10-prox">
+                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap win10-prox">PFP - Headshot</th>
+                            <td class="compact-td win10-prox">Head and shoulders, basic pose/lighting.</td>
+                            <td class="compact-td win10-prox">From 10 R$</td>
+                            <td class="compact-td text-xs win10-prox">Some hours</td>
                         </tr>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <th scope="row" class="compact-th font-medium text-yellow-300 whitespace-nowrap">PFP - Half Body</th>
-                            <td class="compact-td">Torso and arms, more action/props, effects.</td>
-                            <td class="compact-td"><span class="price-tag-negotiable">From 25 R$ (Negotiable)</span></td>
-                            <td class="compact-td text-xs">Some hours</td>
+
+                        <tr class="border-b border-gray-700 hover:bg-gray-700 win10-prox">
+                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap win10-prox">PFP - Half Body</th>
+                            <td class="compact-td win10-prox">Torso and arms, more action/props, effects.</td>
+                            <td class="compact-td win10-prox">From 25 R$</td>
+                            <td class="compact-td text-xs win10-prox">Some hours</td>
                         </tr>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <th scope="row" class="compact-th font-medium text-yellow-300 whitespace-nowrap">PFP - Full Body</th>
-                            <td class="compact-td">Character's entire body, custom background/posing.</td>
-                            <td class="compact-td"><span class="price-tag-negotiable">From 40 R$ (Negotiable)</span></td>
-                            <td class="compact-td text-xs">Some hours</td>
+
+                        <tr class="border-b border-gray-700 hover:bg-gray-700 win10-prox">
+                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap win10-prox">PFP - Full Body</th>
+                            <td class="compact-td win10-prox">Character's entire body, custom background/posing.</td>
+                            <td class="compact-td win10-prox">From 40 R$</td>
+                            <td class="compact-td text-xs win10-prox">Some hours</td>
                         </tr>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <th scope="row" class="compact-th font-medium text-yellow-300 whitespace-nowrap">Game Thumbnail/Ad</th>
-                            <td class="compact-td">1920x1080 graphic (up to 3 characters).</td>
-                            <td class="compact-td"><span class="price-tag-negotiable">From 100 R$ (Negotiable)</span></td>
-                            <td class="compact-td text-xs text-red-400 font-bold">⚠️ Day or two</td>
-                        </tr>
-                        <tr class="hover:bg-2gray-700">
-                            <th scope="row" class="compact-th font-medium text-yellow-300 whitespace-nowrap">Additional Software</th>
-                            <td class="compact-td">I will <span class="bold-underline">TRY</span> to make it look good using PhotoPea, which is <span class="bold-underline">FREE</span>.</td>
-                            <td class="compact-td"><span class="price-tag-negotiable bg-gray-500">(OPTIONAL)</span></td>
-                            <td class="compact-td text-xs">Some hours</td>
+
+                        <tr class="border-b border-gray-700 hover:bg-gray-700 win10-prox">
+                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap win10-prox">Game Thumbnail/Ad</th>
+                            <td class="compact-td win10-prox">1920x1080 graphic (up to 3 characters).</td>
+                            <td class="compact-td win10-prox">From 100 R$</td>
+                            <td class="compact-td text-xs text-red-400 font-bold win10-prox">⚠️ Day or two</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <section class="lg:col-span-1">
-            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"></path><line x1="12" x2="12" y1="12" y2="22"></line></svg>
+        <section class="lg:col-span-1 win10-prox">
+            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center win10-prox">
                 Add-Ons & Fees
             </h2>
             <div class="space-y-4">
-                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
+                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30 win10-prox">
                     <p class="font-semibold text-gray-200">Complex Custom Prop</p>
-                    <p class="text-sm text-gray-400">Detailed items that require importing (weapons, vehicles).</p>
-                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 5 R$ per item</span>
                 </div>
-                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
+                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30 win10-prox">
                     <p class="font-semibold text-gray-200">Additional Character</p>
-                    <p class="text-sm text-gray-400">Per extra posed avatar in the scene.</p>
-                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 10 R$ (Negotiable)</span>
                 </div>
-                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
+                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30 win10-prox">
                     <p class="font-semibold text-gray-200">Detailed Environment</p>
-                    <p class="text-sm text-gray-400">Complex 3D scene build for background.</p>
-                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 10 R$ (Negotiable)</span>
-                </div>
-                <div class="p-4 bg-red-800/50 rounded-lg shadow-lg border border-red-600">
-                    <p class="font-semibold text-red-400">Rush Fee (24hr)</p>
-                    <p class="text-sm text-gray-300">Guaranteed completion within 24 - 48 hours (inquire first).</p>
-                    <span class="price-tag-negotiable mt-1 bg-red-600">From 100 R$ (Negotiable)</span>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- How To Order -->
-    <section class="mb-10">
-        <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><circle cx="8" cy="20" r="1"></circle><circle cx="17" cy="20" r="1"></circle><path d="M7 4h15v7H8l-5 5V5z"></path></svg>
-            How To Order (The Process)
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Contact & Details -->
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="text-lg font-bold text-yellow-300">1. Contact & Details</p>
-                <p class="text-sm text-gray-300 mt-1">
-                    DM me on <strong>Discord: atomiccomics</strong>. Send the service type, avatar name, pose idea, and specific requests.
-                </p>
-
-                <!-- Buttons -->
-                <div class="mt-4 flex flex-wrap gap-3">
-                    <a href="https://discord.gg/invite/sgR842Gj" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-green-500 bg-green-300 hover:bg-green-700 button-hover-scale text-sm">Contact Me</a>
-                    <a href="https://roblox.com/users/Y6068424293OURID/profile" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-blue-500 bg-blue-300 hover:bg-blue-600 button-hover-scale text-sm">Roblox Profile</a>
-                    <a href="#estimate-section" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-purple-500 bg-purple-300 hover:bg-purple-600 button-hover-scale text-sm">Estimate Price</a>
-                </div>
-            </div>
-
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="text-lg font-bold text-yellow-300">2. Quote & Draft</p>
-                <p class="text-sm text-gray-300 mt-1">I will confirm the final price and time, then send a watermarked, low-resolution draft for review.</p>
-            </div>
-
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="text-lg font-bold text-yellow-300">3. Revisions & Approval</p>
-                <p class="text-sm text-gray-300 mt-1">I allow for <span class="text-green-400 font-bold">one round of minor revisions.</span></p>
-            </div>
-
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="text-lg font-bold text-yellow-300">4. Payment & Delivery</p>
-                <p class="text-sm text-gray-300 mt-1">We discuss the payment **AFTER** you approve the final draft. I then deliver the high-res image.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq-section" class="mb-10">
-        <h2 class="text-3xl font-bold text-indigo-400 mb-4">FAQ & Rules</h2>
-        <div class="space-y-4">
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="font-semibold text-yellow-300">Q: How long does a commission take?</p>
-                <p class="text-sm text-gray-300 mt-1">Most headshot or half-body commissions take a few hours, full-body may take longer.</p>
-            </div>
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="font-semibold text-yellow-300">Q: Can I request revisions?</p>
-                <p class="text-sm text-gray-300 mt-1">One round of minor revisions is included. Major changes cost extra.</p>
-            </div>
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="font-semibold text-yellow-300">Q: Payment method?</p>
-                <p class="text-sm text-gray-300 mt-1">Payment is discussed after you approve the draft. ONLY ROBUX ARE ACCEPTED!!!.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Estimate Price Section -->
-    <section id="estimate-section" class="mb-10">
-        <h2 class="text-3xl font-bold text-indigo-400 mb-4">Estimate Your Price</h2>
-<div class="p-4 bg-gray-800 rounded-lg border border-gray-700 space-y-4">
-    <label class="text-sm font-semibold text-gray-200 block">Select Service:</label>
-    <select id="serviceSelect" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-gray-200">
-        <option value="10">PFP - Headshot (From 10 R$)</option>
-        <option value="25">PFP - Half Body (From 25 R$)</option>
-        <option value="40">PFP - Full Body (From 40 R$)</option>
-        <option value="100">Game Thumbnail/Ad (From 100 R$)</option>
-    </select>
-
-    <label class="text-sm font-semibold text-gray-200 block">Additional Character(s):</label>
-    <input type="number" id="extraChar" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-gray-200" min="0" value="0">
-
-    <label class="text-sm font-semibold text-gray-200 block">Complex Prop(s):</label>
-    <input type="number" id="extraProp" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-gray-200" min="0" value="0">
-
-    <button onclick="calculatePrice()" class="px-4 py-2 bg-purple-500 hover:bg-purple-700 rounded-full font-bold text-gray-900 button-hover-scale text-sm border-4 border-purple-600">
-        Calculate
-    </button>
-
-    <p class="text-lg font-bold text-green-400 mt-2">Estimated Price: <span id="estimatedPrice">0</span> R$</p>
 </div>
 
+<!-- WINDOWS 10 PROXIMITY JAVASCRIPT -->
 <script>
-function calculatePrice() {
-    let basePrice = parseInt(document.getElementById("serviceSelect").value);
-    let extraChar = parseInt(document.getElementById("extraChar").value) || 0;
-    let extraProp = parseInt(document.getElementById("extraProp").value) || 0;
-    let total = basePrice + (extraChar * 10) + (extraProp * 5);
-    document.getElementById("estimatedPrice").textContent = total;
-}
+document.addEventListener("mousemove", (e) => {
+    const glow = document.getElementById("cursorGlow");
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+
+    document.querySelectorAll(".win10-prox").forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+
+        const maxDist = 220;
+
+        if (dist < maxDist) {
+            const t = 1 - dist / maxDist;
+            el.style.outlineWidth = (t * 4) + "px";
+            el.style.outlineColor = `rgba(255,255,255,${0.55 * t})`;
+        } else {
+            el.style.outlineWidth = "0px";
+            el.style.outlineColor = "rgba(255,255,255,0)";
+        }
+    });
+});
 </script>
-
-
-    <h3 class="text-lg font-bold text-red-400 mb-2">IMPORTANT T&Cs ⚠️</h3>
-    <ul class="text-xs text-gray-500 font-medium space-y-1">
-         <li>**Payment Policy:** Once paid, the Robux is **NOT REFUNDABLE** (due to Roblox fees/time).</li>
-         <li>**Revisions:** Only one round of minor revisions is included. Major changes cost a small extra fee.</li>
-         <li>**Commercial Use:** If caught lying about the purpose of the GFX, I may report you depending on the seriousness.</li>
-         <li>**Credit:** Please credit me (link to Roblox profile/group) when posting the GFX publicly.</li>
-    </ul>
-    <p class="text-sm text-gray-400 mt-4">Thank you for considering my GFX services!</p>
-</div>
 
 </body>
 </html>
