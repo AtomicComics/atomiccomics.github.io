@@ -2,208 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nico's GFX Commission Sheet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111827;
-            color: #E5E7EB;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 2rem 0;
-        }
 
-        .button-hover-scale {
-            transition: transform 0.25s ease;
-        }
-        .button-hover-scale:hover {
-            transform: scale(1.05);
-        }
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #111827;
+        color: #E5E7EB;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0;
+    }
 
-        .sheet-container {
-            max-width: 1000px;
-            width: 95%;
-            background-color: #1F2937;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            padding: 2rem;
-            border: 2px solid #4F46E5;
-        }
-        .header-title {
-            text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
-        }
-        .price-tag-negotiable {
-            background-color: #3B82F6;
-            color: #E5E7EB;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-weight: 700;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-            font-size: 0.75rem;
-        }
-        .table-header {
-            background-color: #8c00ff;
-            color: #F9FAFB;
-        }
-        .bold-underline {
-            font-weight: 700;
-            text-decoration: underline;
-        }
-        .compact-td {
-            padding: 0.5rem 0.75rem;
-        }
-        .compact-th {
-            padding: 0.5rem 0.75rem;
-        }
+    .button-hover-scale {
+        transition: transform 0.25s ease;
+    }
+    .button-hover-scale:hover {
+        transform: scale(1.05);
+    }
 
-        /* ---------- WINDOWS 10 PROXIMITY HOVER SYSTEM ---------- */
+    .sheet-container {
+        max-width: 1000px;
+        width: 95%;
+        background-color: #1F2937;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        padding: 2rem;
+        border: 2px solid #4F46E5;
+    }
 
-        /* Cursor glow */
-        .cursor-glow {
-            position: fixed;
-            width: 150px;
-            height: 150px;
-            pointer-events: none;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0));
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            mix-blend-mode: screen;
-        }
+    .header-title {
+        text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    }
 
-        /* Proximity outline */
-        .win10-prox {
-            position: relative;
-            transition: outline 0.15s ease, outline-offset 0.15s ease;
-            outline: solid 0px rgba(255, 255, 255, 0);
-            outline-offset: 3px;
-        }
-    </style>
-</head>
-<body>
+    .table-header {
+        background-color: #8c00ff;
+        color: #f9fafb;
+    }
 
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<div class="sheet-container win10-prox">
-    <header class="text-center mb-8 win10-prox">
-        <h1 class="text-5xl font-extrabold text-indigo-400 header-title win10-prox">
-            <span class="text-yellow-400">Nico's</span> GFX Commission Sheet
-        </h1>
-        <p class="text-lg text-gray-400 mt-2 win10-prox">
-            Status: <span class="font-bold text-green-400">OPEN</span> for Commissions | Software Used: Roblox Studio & PhotoPea
-        </p>
-    </header>
-
-    <div class="w-full mb-8 grid grid-cols-2 sm:grid-cols-4 gap-3 p-1 bg-gray-800 rounded-xl shadow-2xl border border-gray-700">
-        <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" class="win10-prox w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
-        <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" class="win10-prox w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
-        <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" class="win10-prox w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
-        <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" class="win10-prox w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
-    </div>
-
-    <div class="grid grid-cols-3 gap-8 mb-10">
-        <section class="col-span-2 win10-prox">
-            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center win10-prox">
-                Services & Pricing (Robux R$)
-            </h2>
-            <div class="overflow-x-auto rounded-lg shadow-lg win10-prox">
-                <table class="min-w-full text-sm text-left text-gray-300 win10-prox">
-                    <thead class="text-xs uppercase table-header">
-                        <tr>
-                            <th class="compact-th win10-prox">Service</th>
-                            <th class="compact-th win10-prox">Description</th>
-                            <th class="compact-th win10-prox">Price (R$)</th>
-                            <th class="compact-th win10-prox">Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700 win10-prox">
-                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap win10-prox">PFP - Headshot</th>
-                            <td class="compact-td win10-prox">Head and shoulders, basic pose/lighting.</td>
-                            <td class="compact-td win10-prox">From 10 R$</td>
-                            <td class="compact-td text-xs win10-prox">Some hours</td>
-                        </tr>
-
-                        <tr class="border-b border-gray-700 hover:bg-gray-700 win10-prox">
-                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap win10-prox">PFP - Half Body</th>
-                            <td class="compact-td win10-prox">Torso and arms, more action/props, effects.</td>
-                            <td class="compact-td win10-prox">From 25 R$</td>
-                            <td class="compact-td text-xs win10-prox">Some hours</td>
-                        </tr>
-
-                        <tr class="border-b border-gray-700 hover:bg-gray-700 win10-prox">
-                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap win10-prox">PFP - Full Body</th>
-                            <td class="compact-td win10-prox">Character's entire body, custom background/posing.</td>
-                            <td class="compact-td win10-prox">From 40 R$</td>
-                            <td class="compact-td text-xs win10-prox">Some hours</td>
-                        </tr>
-
-                        <tr class="border-b border-gray-700 hover:bg-gray-700 win10-prox">
-                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap win10-prox">Game Thumbnail/Ad</th>
-                            <td class="compact-td win10-prox">1920x1080 graphic (up to 3 characters).</td>
-                            <td class="compact-td win10-prox">From 100 R$</td>
-                            <td class="compact-td text-xs text-red-400 font-bold win10-prox">⚠️ Day or two</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="lg:col-span-1 win10-prox">
-            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center win10-prox">
-                Add-Ons & Fees
-            </h2>
-            <div class="space-y-4">
-                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30 win10-prox">
-                    <p class="font-semibold text-gray-200">Complex Custom Prop</p>
-                </div>
-                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30 win10-prox">
-                    <p class="font-semibold text-gray-200">Additional Character</p>
-                </div>
-                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30 win10-prox">
-                    <p class="font-semibold text-gray-200">Detailed Environment</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-</div>
-
-<!-- WINDOWS 10 PROXIMITY JAVASCRIPT -->
-<script>
-document.addEventListener("mousemove", (e) => {
-    const glow = document.getElementById("cursorGlow");
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
-
-    document.querySelectorAll(".win10-prox").forEach(el => {
-        const rect = el.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-
-        const dx = e.clientX - cx;
-        const dy = e.clientY - cy;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-
-        const maxDist = 220;
-
-        if (dist < maxDist) {
-            const t = 1 - dist / maxDist;
-            el.style.outlineWidth = (t * 4) + "px";
-            el.style.outlineColor = `rgba(255,255,255,${0.55 * t})`;
-        } else {
-            el.style.outlineWidth = "0px";
-            el.style.outlineColor = "rgba(255,255,255,0)";
-        }
-    });
-});
-</script>
-
-</body>
-</html>
+    /* -*
