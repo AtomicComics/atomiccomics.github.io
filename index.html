@@ -16,6 +16,7 @@ body {
     justify-content: center;
     padding: 2rem 0;
     position: relative;
+    cursor: default; /* keep default cursor visible */
 }
 
 /* Cursor glow */
@@ -23,13 +24,13 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 80px;
-    height: 80px;
-    margin-left: -40px;
-    margin-top: -40px;
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    margin-top: -50px;
     border-radius: 50%;
     pointer-events: none;
-    background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 60%);
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
     transform: translate3d(0,0,0);
     z-index: 9999;
     transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease;
@@ -41,7 +42,7 @@ body {
 }
 .button-hover-outline:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 15px 4px rgba(255,255,255,0.25);
+    box-shadow: 0 0 15px 5px rgba(255,255,255,0.25);
 }
 
 /* Other existing styles */
@@ -90,7 +91,6 @@ body {
 <div class="cursor-glow"></div>
 
 <div class="sheet-container">
-    <!-- HEADER -->
     <header class="text-center mb-8">
         <h1 class="text-5xl font-extrabold text-indigo-400 header-title">
             <span class="text-yellow-400">Nico's</span> GFX Commission Sheet
@@ -100,7 +100,7 @@ body {
         </p>
     </header>
 
-    <!-- SAMPLES -->
+    <!-- SAMPLE IMAGES -->
     <div class="w-full mb-8 grid grid-cols-2 sm:grid-cols-4 gap-3 p-1 bg-gray-800 rounded-xl shadow-2xl border border-gray-700">
         <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="GFX Sample 1" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
         <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="GFX Sample 2" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
@@ -108,14 +108,70 @@ body {
         <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="GFX Sample 4" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
     </div>
 
-    <!-- BUTTONS EXAMPLE -->
-    <div class="mt-6 flex gap-3">
-        <a href="https://discord.gg/invite/sgR842Gj" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-green-500 bg-green-300 button-hover-outline text-sm">
-            Contact Me
-        </a>
-        <a href="https://roblox.com/users/Y6068424293OURID/profile" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-blue-500 bg-blue-300 button-hover-outline text-sm">
-            Roblox Profile
-        </a>
+    <!-- SERVICES TABLE -->
+    <div class="grid grid-cols-3 gap-8 mb-10">
+        <section class="col-span-2">
+            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center">
+                Services & Pricing (Robux R$)
+            </h2>
+            <div class="overflow-x-auto rounded-lg shadow-lg">
+                <table class="min-w-full text-sm text-left text-gray-300">
+                    <thead class="text-xs uppercase table-header">
+                        <tr>
+                            <th class="compact-th">Service</th>
+                            <th class="compact-th">Description</th>
+                            <th class="compact-th">Price (R$)</th>
+                            <th class="compact-th">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700">
+                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap">PFP - Headshot</th>
+                            <td class="compact-td">Head and shoulders, basic pose/lighting.</td>
+                            <td class="compact-td"><span class="price-tag-negotiable">From 10 R$ (Negotiable)</span></td>
+                            <td class="compact-td text-xs">Some hours</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700">
+                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap">PFP - Half Body</th>
+                            <td class="compact-td">Torso and arms, more action/props, effects.</td>
+                            <td class="compact-td"><span class="price-tag-negotiable">From 25 R$ (Negotiable)</span></td>
+                            <td class="compact-td text-xs">Some hours</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700">
+                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap">PFP - Full Body</th>
+                            <td class="compact-td">Character's entire body, custom background/posing.</td>
+                            <td class="compact-td"><span class="price-tag-negotiable">From 40 R$ (Negotiable)</span></td>
+                            <td class="compact-td text-xs">Some hours</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700">
+                            <th class="compact-th font-medium text-yellow-300 whitespace-nowrap">Game Thumbnail/Ad</th>
+                            <td class="compact-td">1920x1080 graphic (up to 3 characters).</td>
+                            <td class="compact-td"><span class="price-tag-negotiable">From 100 R$ (Negotiable)</span></td>
+                            <td class="compact-td text-xs text-red-400 font-bold">⚠️ Day or two</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ADD-ONS -->
+        <section class="lg:col-span-1">
+            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center">
+                Add-Ons & Fees
+            </h2>
+            <div class="space-y-4">
+                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
+                    <p class="font-semibold text-gray-200">Complex Custom Prop</p>
+                    <p class="text-sm text-gray-400">Detailed items that require importing (weapons, vehicles).</p>
+                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 5 R$ per item</span>
+                </div>
+                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
+                    <p class="font-semibold text-gray-200">Additional Character</p>
+                    <p class="text-sm text-gray-400">Per extra posed avatar in the scene.</p>
+                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 10 R$ (Negotiable)</span>
+                </div>
+            </div>
+        </section>
     </div>
 
 </div>
@@ -126,5 +182,6 @@ document.addEventListener('mousemove', e => {
     cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
 });
 </script>
+
 </body>
 </html>
