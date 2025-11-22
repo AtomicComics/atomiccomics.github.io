@@ -110,6 +110,53 @@
         .carousel-img:hover {
             transform: scale(1.05);
         }
+
+        /* Subtle fading cursor glow */
+.cursor-glow {
+    position: fixed;
+    pointer-events: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.2);
+    box-shadow: 0 0 15px rgba(254, 215, 102, 0.5);;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, opacity 0.3s ease;
+    z-index: 9999;
+}
+
+        /* Custom cursor glow */
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><circle cx="16" cy="16" r="6" fill="white" fill-opacity="0.3"><animate attributeName="r" from="6" to="12" dur="1s" repeatCount="indefinite" /></circle></svg>') 16 16, auto;
+}
+
+/* Optional: subtle glow on hover for interactive elements */
+button, a {
+    position: relative;
+    z-index: 0;
+}
+
+button::after,
+a::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 9999px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+button:hover::after,
+a:hover::after {
+    opacity: 1;
+}
+
+
     </style>
 </head>
 <body>
@@ -238,7 +285,7 @@
                 <!-- Buttons -->
                 <div class="mt-4 flex flex-wrap gap-3">
                     <a href="https://discord.gg/invite/sgR842Gj" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-green-500 bg-green-300 hover:bg-green-700 button-hover-scale text-sm">Contact Me</a>
-                    <a href="https://roblox.com/users/Y6068424293OURID/profile" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-blue-500 bg-blue-300 hover:bg-blue-600 button-hover-scale text-sm">Roblox Profile</a>
+                    <a href="https://roblox.com/users/6068424293/profile" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-blue-500 bg-blue-300 hover:bg-blue-600 button-hover-scale text-sm">Roblox Profile</a>
                     <a href="#estimate-section" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-purple-500 bg-purple-300 hover:bg-purple-600 button-hover-scale text-sm">Estimate Price</a>
                 </div>
             </div>
@@ -325,5 +372,25 @@
     </section>
 </div>
 
+<script>
+const glow = document.createElement('div');
+glow.classList.add('cursor-glow');
+document.body.appendChild(glow);
+
+document.addEventListener('mousemove', e => {
+    glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    glow.style.opacity = 1;
+});
+
+// Optional: fade out when mouse stops moving
+let timeout;
+document.addEventListener('mousemove', () => {
+    clearTimeout(timeout);
+    glow.style.opacity = 1;
+    timeout = setTimeout(() => glow.style.opacity = 0, 800); // fades after 0.8s of no movement
+});
+</script>
+
+    
 </body>
 </html>
