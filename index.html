@@ -178,25 +178,42 @@
     mix-blend-mode: lighten;
   }
 
-  .carousel-container {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid #4f46e5;
-    margin-bottom: 1.5rem;
+.carousel-container {
+  overflow: hidden;
+  border-bottom: 2px solid #4f46e5;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-wrapper {
+  display: flex;
+  width: max-content;
+  animation: scrollRight 30s linear infinite;
+}
+
+.carousel-wrapper img {
+  height: 110px;
+  border-radius: 0.8rem;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  object-fit: cover;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.carousel-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(0);
   }
-  .carousel-container img {
-    height: 110px;
-    border-radius: 0.8rem;
-    margin-right: 0.75rem;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    object-fit: cover;
-    display: inline-block;
+  100% {
+    transform: translateX(-50%);
   }
-  .carousel-container img:hover {
-    transform: scale(1.05);
-  }
+}
 
   /* Compact How to order cards */
   .order-step {
@@ -225,14 +242,31 @@
         </p>
       </header>
 
-      <!-- Carousel -->
-      <div class="carousel-container" aria-label="Portfolio images">
-        <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="Example 1" />
-        <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="Example 2" />
-        <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="Example 3" />
-        <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="Example 4" />
-        <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="Example 5" />
-      </div>
+<!-- Carousel -->
+<div class="carousel-container" aria-label="Portfolio images">
+  <div class="carousel-wrapper">
+    <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="Example 1" />
+    <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="Example 2" />
+    <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="Example 3" />
+    <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="Example 4" />
+    <img src="https://i.ibb.co/8DK5nk03/IMG-20250809-WA0019.jpg" alt="Example 5" />
+    <img src="https://i.ibb.co/fdH5J5xh/aiease-17541470826512.png" alt="Example 6" />
+    <img src="https://i.ibb.co/Y49FV2P2/IMG-20250803-WA0014.jpg" alt="Example 7" />
+    <img src="https://i.ibb.co/Z69x4yGs/IMG-20250730-WA000.jpg" alt="Example 8" />
+    <img src="https://i.ibb.co/Q7dBQ8cz/IMG-20250731-WA0006.jpg" alt="Example 9" />
+    <!-- Duplicate images for smooth looping -->
+    <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="Example 1" />
+    <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="Example 2" />
+    <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="Example 3" />
+    <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="Example 4" />
+    <img src="https://i.ibb.co/8DK5nk03/IMG-20250809-WA0019.jpg" alt="Example 5" />
+    <img src="https://i.ibb.co/fdH5J5xh/aiease-17541470826512.png" alt="Example 6" />
+    <img src="https://i.ibb.co/Y49FV2P2/IMG-20250803-WA0014.jpg" alt="Example 7" />
+    <img src="https://i.ibb.co/Z69x4yGs/IMG-20250730-WA000.jpg" alt="Example 8" />
+    <img src="https://i.ibb.co/Q7dBQ8cz/IMG-20250731-WA0006.jpg" alt="Example 9" />
+  </div>
+</div>
+
 
       <!-- Services & Pricing -->
       <section>
