@@ -67,17 +67,19 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-
         .animate-slide {
             display: flex;
-            animation: slide 20s linear infinite;
+            gap: 1rem;
+            animation: slide 30s linear infinite;
         }
-
-        /* Optional gradient overlay for fade effect on edges */
         .carousel-container {
             position: relative;
             overflow: hidden;
             border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 2px solid #4F46E5;
+            background-color: #1F2937;
+            padding: 0.5rem;
         }
         .carousel-container::before,
         .carousel-container::after {
@@ -97,6 +99,17 @@
             right: 0;
             background: linear-gradient(to left, #111827, transparent);
         }
+        .carousel-img {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 1rem;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .carousel-img:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -112,19 +125,20 @@
     </header>
 
     <!-- Carousel Section -->
-    <div class="carousel-container w-full mb-8 border border-gray-700 shadow-2xl bg-gray-800 p-1">
-        <div class="animate-slide gap-3">
-            <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="GFX Sample 1" class="w-60 h-60 object-cover rounded-lg flex-shrink-0"/>
-            <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="GFX Sample 2" class="w-60 h-60 object-cover rounded-lg flex-shrink-0"/>
-            <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="GFX Sample 3" class="w-60 h-60 object-cover rounded-lg flex-shrink-0"/>
-            <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="GFX Sample 4" class="w-60 h-60 object-cover rounded-lg flex-shrink-0"/>
+    <div class="carousel-container">
+        <div class="animate-slide">
+            <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="GFX Sample 1" class="carousel-img">
+            <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="GFX Sample 2" class="carousel-img">
+            <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="GFX Sample 3" class="carousel-img">
+            <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="GFX Sample 4" class="carousel-img">
             <!-- Repeat images for smooth infinite scroll -->
-            <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="GFX Sample 1" class="w-60 h-60 object-cover rounded-lg flex-shrink-0"/>
-            <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="GFX Sample 2" class="w-60 h-60 object-cover rounded-lg flex-shrink-0"/>
+            <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="GFX Sample 1" class="carousel-img">
+            <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="GFX Sample 2" class="carousel-img">
+            <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="GFX Sample 3" class="carousel-img">
+            <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="GFX Sample 4" class="carousel-img">
         </div>
     </div>
 
-    <!-- Services & Pricing Table -->
     <div class="grid grid-cols-3 gap-8 mb-10">
         <section class="col-span-2">
             <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center">
@@ -177,14 +191,138 @@
             </div>
         </section>
 
-        <!-- Add-Ons & Fees section stays the same -->
         <section class="lg:col-span-1">
-            <!-- ... your add-ons content ... -->
+            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"></path><line x1="12" x2="12" y1="12" y2="22"></line></svg>
+                Add-Ons & Fees
+            </h2>
+            <div class="space-y-4">
+                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
+                    <p class="font-semibold text-gray-200">Complex Custom Prop</p>
+                    <p class="text-sm text-gray-400">Detailed items that require importing (weapons, vehicles).</p>
+                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 5 R$ per item</span>
+                </div>
+                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
+                    <p class="font-semibold text-gray-200">Additional Character</p>
+                    <p class="text-sm text-gray-400">Per extra posed avatar in the scene.</p>
+                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 10 R$ (Negotiable)</span>
+                </div>
+                <div class="p-4 bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
+                    <p class="font-semibold text-gray-200">Detailed Environment</p>
+                    <p class="text-sm text-gray-400">Complex 3D scene build for background.</p>
+                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 10 R$ (Negotiable)</span>
+                </div>
+                <div class="p-4 bg-red-800/50 rounded-lg shadow-lg border border-red-600">
+                    <p class="font-semibold text-red-400">Rush Fee (24hr)</p>
+                    <p class="text-sm text-gray-300">Guaranteed completion within 24 - 48 hours (inquire first).</p>
+                    <span class="price-tag-negotiable mt-1 bg-red-600">From 100 R$ (Negotiable)</span>
+                </div>
+            </div>
         </section>
     </div>
 
-    <!-- Rest of your HTML stays exactly the same -->
+    <!-- How To Order -->
+    <section class="mb-10">
+        <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><circle cx="8" cy="20" r="1"></circle><circle cx="17" cy="20" r="1"></circle><path d="M7 4h15v7H8l-5 5V5z"></path></svg>
+            How To Order (The Process)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Contact & Details -->
+            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <p class="text-lg font-bold text-yellow-300">1. Contact & Details</p>
+                <p class="text-sm text-gray-300 mt-1">
+                    DM me on <strong>Discord: atomiccomics</strong>. Send the service type, avatar name, pose idea, and specific requests.
+                </p>
 
+                <!-- Buttons -->
+                <div class="mt-4 flex flex-wrap gap-3">
+                    <a href="https://discord.gg/invite/sgR842Gj" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-green-500 bg-green-300 hover:bg-green-700 button-hover-scale text-sm">Contact Me</a>
+                    <a href="https://roblox.com/users/Y6068424293OURID/profile" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-blue-500 bg-blue-300 hover:bg-blue-600 button-hover-scale text-sm">Roblox Profile</a>
+                    <a href="#estimate-section" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-purple-500 bg-purple-300 hover:bg-purple-600 button-hover-scale text-sm">Estimate Price</a>
+                </div>
+            </div>
+
+            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <p class="text-lg font-bold text-yellow-300">2. Quote & Draft</p>
+                <p class="text-sm text-gray-300 mt-1">I will confirm the final price and time, then send a watermarked, low-resolution draft for review.</p>
+            </div>
+
+            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <p class="text-lg font-bold text-yellow-300">3. Revisions & Approval</p>
+                <p class="text-sm text-gray-300 mt-1">I allow for <span class="text-green-400 font-bold">one round of minor revisions.</span></p>
+            </div>
+
+            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <p class="text-lg font-bold text-yellow-300">4. Payment & Delivery</p>
+                <p class="text-sm text-gray-300 mt-1">We discuss the payment **AFTER** you approve the final draft. I then deliver the high-res image.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq-section" class="mb-10">
+        <h2 class="text-3xl font-bold text-indigo-400 mb-4">FAQ & Rules</h2>
+        <div class="space-y-4">
+            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <p class="font-semibold text-yellow-300">Q: How long does a commission take?</p>
+                <p class="text-sm text-gray-300 mt-1">Most headshot or half-body commissions take a few hours, full-body may take longer.</p>
+            </div>
+            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <p class="font-semibold text-yellow-300">Q: Can I request revisions?</p>
+                <p class="text-sm text-gray-300 mt-1">One round of minor revisions is included. Major changes cost extra.</p>
+            </div>
+            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                <p class="font-semibold text-yellow-300">Q: Payment method?</p>
+                <p class="text-sm text-gray-300 mt-1">Payment is discussed after you approve the draft. ONLY ROBUX ARE ACCEPTED!!!.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estimate Price Section -->
+    <section id="estimate-section" class="mb-10">
+        <h2 class="text-3xl font-bold text-indigo-400 mb-4">Estimate Your Price</h2>
+        <div class="p-4 bg-gray-800 rounded-lg border border-gray-700 space-y-4">
+            <label class="text-sm font-semibold text-gray-200 block">Select Service:</label>
+            <select id="serviceSelect" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-gray-200">
+                <option value="10">PFP - Headshot (From 10 R$)</option>
+                <option value="25">PFP - Half Body (From 25 R$)</option>
+                <option value="40">PFP - Full Body (From 40 R$)</option>
+                <option value="100">Game Thumbnail/Ad (From 100 R$)</option>
+            </select>
+
+            <label class="text-sm font-semibold text-gray-200 block">Additional Character(s):</label>
+            <input type="number" id="extraChar" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-gray-200" min="0" value="0">
+
+            <label class="text-sm font-semibold text-gray-200 block">Complex Prop(s):</label>
+            <input type="number" id="extraProp" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-gray-200" min="0" value="0">
+
+            <button onclick="calculatePrice()" class="px-4 py-2 bg-purple-500 hover:bg-purple-700 rounded-full font-bold text-gray-900 button-hover-scale text-sm border-4 border-purple-600">
+                Calculate
+            </button>
+
+            <p class="text-lg font-bold text-green-400 mt-2">Estimated Price: <span id="estimatedPrice">0</span> R$</p>
+        </div>
+
+        <script>
+        function calculatePrice() {
+            let basePrice = parseInt(document.getElementById("serviceSelect").value);
+            let extraChar = parseInt(document.getElementById("extraChar").value) || 0;
+            let extraProp = parseInt(document.getElementById("extraProp").value) || 0;
+            let total = basePrice + (extraChar * 10) + (extraProp * 5);
+            document.getElementById("estimatedPrice").textContent = total;
+        }
+        </script>
+
+        <h3 class="text-lg font-bold text-red-400 mb-2">IMPORTANT T&Cs ⚠️</h3>
+        <ul class="text-xs text-gray-500 font-medium space-y-1">
+             <li>**Payment Policy:** Once paid, the Robux is **NOT REFUNDABLE** (due to Roblox fees/time).</li>
+             <li>**Revisions:** Only one round of minor revisions is included. Major changes cost a small extra fee.</li>
+             <li>**Commercial Use:** If caught lying about the purpose of the GFX, I may report you depending on the seriousness.</li>
+             <li>**Credit:** Please credit me (link to Roblox profile/group) when posting the GFX publicly.</li>
+        </ul>
+        <p class="text-sm text-gray-400 mt-4">Thank you for considering my GFX services!</p>
+    </section>
 </div>
 
 </body>
