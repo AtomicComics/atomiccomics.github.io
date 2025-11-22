@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nico's GFX Commission Sheet</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nico's GFX Commission Sheet</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
     body {
         font-family: 'Inter', sans-serif;
@@ -16,13 +15,35 @@
         display: flex;
         justify-content: center;
         padding: 2rem 0;
+        cursor: none; /* hide default cursor */
     }
 
-    .button-hover-scale {
-        transition: transform 0.25s ease;
+    /* Cursor glow effect */
+    .cursor-glow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 80px;
+        height: 80px;
+        margin-left: -40px;
+        margin-top: -40px;
+        border-radius: 50%;
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+        transform: translate3d(0,0,0);
+        transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease;
+        z-index: 9999;
     }
-    .button-hover-scale:hover {
+
+    /* Buttons hover outline + scale */
+    .button-hover-outline {
+        position: relative;
+        z-index: 1;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .button-hover-outline:hover {
         transform: scale(1.05);
+        box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.25);
     }
 
     .sheet-container {
@@ -39,43 +60,43 @@
         text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
     }
 
+    .price-tag-negotiable {
+        background-color: #3B82F6;
+        color: #E5E7EB;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-weight: 700;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.75rem;
+    }
+
     .table-header {
         background-color: #8c00ff;
-        color: #f9fafb;
+        color: #F9FAFB;
     }
 
-    /* --------------------------
-       Windows 10 Proximity Effects
-       -------------------------- */
-
-    .win10-prox {
-        position: relative;
-        transition: outline 0.1s ease-out, box-shadow 0.1s ease-out;
+    .bold-underline {
+        font-weight: 700;
+        text-decoration: underline;
     }
 
-    /* Cursor Glow */
-    #cursor-glow {
-        width: 40px;
-        height: 40px;
-        background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
-        position: fixed;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        border-radius: 50%;
-        transform: translate(-50%,-50%);
-        mix-blend-mode: screen;
-        z-index: 9999;
+    .compact-td {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .compact-th {
+        padding: 0.5rem 0.75rem;
     }
 </style>
 </head>
-
 <body>
 
-<div id="cursor-glow"></div>
+<!-- Cursor Glow -->
+<div class="cursor-glow"></div>
 
 <div class="sheet-container">
-
     <header class="text-center mb-8">
         <h1 class="text-5xl font-extrabold text-indigo-400 header-title">
             <span class="text-yellow-400">Nico's</span> GFX Commission Sheet
@@ -85,182 +106,31 @@
         </p>
     </header>
 
-    <!-- IMAGE GRID (PROX ON IMAGES ONLY) -->
+    <!-- Sample Images -->
     <div class="w-full mb-8 grid grid-cols-2 sm:grid-cols-4 gap-3 p-1 bg-gray-800 rounded-xl shadow-2xl border border-gray-700">
-        <img class="win10-prox rounded-lg w-full aspect-square object-cover" src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png">
-        <img class="win10-prox rounded-lg w-full aspect-square object-cover" src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg">
-        <img class="win10-prox rounded-lg w-full aspect-square object-cover" src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg">
-        <img class="win10-prox rounded-lg w-full aspect-square object-cover" src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg">
+        <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="GFX Sample 1" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
+        <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="GFX Sample 2" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
+        <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="GFX Sample 3" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
+        <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="GFX Sample 4" class="w-full aspect-square object-cover rounded-lg transform hover:scale-[1.02] transition duration-300"/>
     </div>
 
-    <div class="grid grid-cols-3 gap-8 mb-10">
-        <section class="col-span-2">
-
-            <h2 class="text-3xl font-bold text-indigo-400 mb-4 flex items-center">
-                Services & Pricing (Robux R$)
-            </h2>
-
-            <div class="overflow-x-auto rounded-lg shadow-lg">
-                <!-- TABLE (NO PROX HERE!) -->
-                <table class="min-w-full text-sm text-left text-gray-300">
-                    <thead class="text-xs uppercase table-header">
-                        <tr>
-                            <th class="compact-th">Service</th>
-                            <th class="compact-th">Description</th>
-                            <th class="compact-th">Price (R$)</th>
-                            <th class="compact-th">Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <th class="compact-th">PFP - Headshot</th>
-                            <td class="compact-td">Head and shoulders, basic pose/lighting.</td>
-                            <td class="compact-td"><span class="price-tag-negotiable">From 10 R$</span></td>
-                            <td class="compact-td">Some hours</td>
-                        </tr>
-
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <th class="compact-th">PFP - Half Body</th>
-                            <td class="compact-td">Torso and arms, more action/props, effects.</td>
-                            <td class="compact-td"><span class="price-tag-negotiable">From 25 R$</span></td>
-                            <td class="compact-td">Some hours</td>
-                        </tr>
-
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <th class="compact-th">PFP - Full Body</th>
-                            <td class="compact-td">Entire body w/ custom background.</td>
-                            <td class="compact-td"><span class="price-tag-negotiable">From 40 R$</span></td>
-                            <td class="compact-td">Some hours</td>
-                        </tr>
-
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <th class="compact-th">Game Thumbnail/Ad</th>
-                            <td class="compact-td">1920x1080, up to 3 characters.</td>
-                            <td class="compact-td"><span class="price-tag-negotiable">From 100 R$</span></td>
-                            <td class="compact-td text-red-400 font-bold">⚠️ Day or two</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- ADD-ONS (PROX ON CARDS) -->
-        <section class="lg:col-span-1">
-            <h2 class="text-3xl font-bold text-indigo-400 mb-4">Add-Ons & Fees</h2>
-
-            <div class="space-y-4">
-
-                <div class="p-4 win10-prox bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
-                    <p class="font-semibold text-gray-200">Complex Prop</p>
-                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 5 R$</span>
-                </div>
-
-                <div class="p-4 win10-prox bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
-                    <p class="font-semibold text-gray-200">Additional Character</p>
-                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 10 R$</span>
-                </div>
-
-                <div class="p-4 win10-prox bg-gray-700 rounded-lg shadow-lg border border-yellow-600/30">
-                    <p class="font-semibold text-gray-200">Environment</p>
-                    <span class="price-tag-negotiable mt-1 bg-yellow-600">From 10 R$</span>
-                </div>
-
-                <div class="p-4 win10-prox bg-red-800/50 rounded-lg shadow-lg border border-red-600">
-                    <p class="font-semibold text-red-400">Rush Fee</p>
-                    <span class="price-tag-negotiable mt-1 bg-red-600">From 100 R$</span>
-                </div>
-
-            </div>
-        </section>
+    <!-- Buttons Example -->
+    <div class="mt-6 flex gap-3">
+        <a href="https://discord.gg/invite/sgR842Gj" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-green-500 bg-green-300 button-hover-outline text-sm">
+            Contact Me
+        </a>
+        <a href="https://roblox.com/users/Y6068424293OURID/profile" class="px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-blue-500 bg-blue-300 button-hover-outline text-sm">
+            Roblox Profile
+        </a>
     </div>
-
-    <!-- ORDER -->
-    <section class="mb-10">
-        <h2 class="text-3xl font-bold text-indigo-400 mb-4">How To Order</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="text-lg font-bold text-yellow-300">1. Contact & Details</p>
-
-                <div class="mt-4 flex flex-wrap gap-3">
-                    <a class="win10-prox px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-green-500 bg-green-300 button-hover-scale">Contact Me</a>
-
-                    <a class="win10-prox px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-blue-500 bg-blue-300 button-hover-scale">Roblox Profile</a>
-
-                    <a class="win10-prox px-4 py-2 font-bold text-gray-900 rounded-full border-4 border-purple-500 bg-purple-300 button-hover-scale">Estimate Price</a>
-                </div>
-            </div>
-
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="text-lg font-bold text-yellow-300">2. Quote & Draft</p>
-            </div>
-
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="text-lg font-bold text-yellow-300">3. Revisions</p>
-            </div>
-
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="text-lg font-bold text-yellow-300">4. Payment & Delivery</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- FAQ (PROX ON CARDS) -->
-    <section class="mb-10">
-        <h2 class="text-3xl font-bold text-indigo-400 mb-4">FAQ & Rules</h2>
-
-        <div class="space-y-4">
-            <div class="win10-prox p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="font-semibold text-yellow-300">Q: How long?</p>
-            </div>
-
-            <div class="win10-prox p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="font-semibold text-yellow-300">Q: Revisions?</p>
-            </div>
-
-            <div class="win10-prox p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <p class="font-semibold text-yellow-300">Q: Payment?</p>
-            </div>
-        </div>
-    </section>
-
 </div>
 
-<!-- PROXIMITY JS -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cursor = document.createElement("div");
-  cursor.style.position = "fixed";
-  cursor.style.pointerEvents = "none";
-  cursor.style.zIndex = "9999";
-  cursor.style.width = "150px"; // bigger size
-  cursor.style.height = "150px"; // bigger size
-  cursor.style.borderRadius = "50%";
-  cursor.style.background = "radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 70%)"; // fading gradient
-  cursor.style.transform = "translate(-50%, -50%)";
-  cursor.style.transition = "transform 0.1s ease-out";
-  document.body.appendChild(cursor);
-
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
-  });
-
-  // Optional: remove cursor glow when inactive
-  let idleTimeout;
-  document.addEventListener("mousemove", () => {
-    cursor.style.opacity = "1";
-    clearTimeout(idleTimeout);
-    idleTimeout = setTimeout(() => {
-      cursor.style.opacity = "0";
-    }, 2000); // fades out after 2 seconds of no movement
-  });
-});
+    // Cursor glow follow
+    const cursor = document.querySelector('.cursor-glow');
+    document.addEventListener('mousemove', e => {
+        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+    });
 </script>
-
-
 </body>
 </html>
