@@ -231,29 +231,36 @@
 
 <!-- PROXIMITY JS -->
 <script>
-document.addEventListener("mousemove", e => {
-    const glow = document.getElementById("cursor-glow");
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
+document.addEventListener("DOMContentLoaded", () => {
+  const cursor = document.createElement("div");
+  cursor.style.position = "fixed";
+  cursor.style.pointerEvents = "none";
+  cursor.style.zIndex = "9999";
+  cursor.style.width = "150px"; // bigger size
+  cursor.style.height = "150px"; // bigger size
+  cursor.style.borderRadius = "50%";
+  cursor.style.background = "radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 70%)"; // fading gradient
+  cursor.style.transform = "translate(-50%, -50%)";
+  cursor.style.transition = "transform 0.1s ease-out";
+  document.body.appendChild(cursor);
 
-    document.querySelectorAll(".win10-prox").forEach(el => {
-        const rect = el.getBoundingClientRect();
-        const dx = e.clientX - (rect.left + rect.width/2);
-        const dy = e.clientY - (rect.top + rect.height/2);
-        const dist = Math.sqrt(dx*dx + dy*dy);
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  });
 
-        const maxDist = 180;  
-        if (dist < maxDist) {
-            const intensity = 1 - (dist / maxDist);
-            el.style.outline = `2px solid rgba(255,255,255,${intensity})`;
-            el.style.boxShadow = `0 0 ${20 * intensity}px rgba(255,255,255,${intensity})`;
-        } else {
-            el.style.outline = "none";
-            el.style.boxShadow = "none";
-        }
-    });
+  // Optional: remove cursor glow when inactive
+  let idleTimeout;
+  document.addEventListener("mousemove", () => {
+    cursor.style.opacity = "1";
+    clearTimeout(idleTimeout);
+    idleTimeout = setTimeout(() => {
+      cursor.style.opacity = "0";
+    }, 2000); // fades out after 2 seconds of no movement
+  });
 });
 </script>
+
 
 </body>
 </html>
