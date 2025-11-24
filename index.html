@@ -168,16 +168,17 @@
   }
 
   .cursor-glow {
-    position: fixed;
-    pointer-events: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(167,139,250,1) 0%, rgba(147,112,219,0.1) 60%, transparent 100%);
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    mix-blend-mode: lighten;
-  }
+  position: fixed;
+  pointer-events: none;
+  width: 50px; /* bigger */
+  height: 50px; /* bigger */
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(147,112,219,0.9) 0%, rgba(147,112,219,0.3) 40%, transparent 100%);
+  transform: translate(-50%, -50%);
+  z-index: 99999; /* on top of everything */
+  mix-blend-mode: screen; /* makes it brighter over dark backgrounds */
+}
+
 
   .carousel-container {
     overflow: hidden;
@@ -425,14 +426,22 @@
         </div>
       </section>
 
-      <!-- Important Terms -->
-      <section>
-        <div class="important-terms">
-          <p><strong>Important:</strong> All sales are <span class="red">final</span>. R$ payments only. Rush fees are optional.</p>
-        </div>
-      </section>
-    </div>
+      <!-- Terms of Service / Important Info -->
+<section>
+  <div class="important-terms">
+    <h2 class="text-yellow-400 font-bold mb-2">Terms of Service & Important Info</h2>
+    <ul class="list-disc list-inside">
+      <li><strong>Payment:</strong> All commissions are paid in <span class="red">Robux (R$)</span> only.</li>
+      <li><strong>No Refunds:</strong> All sales are <span class="red">final</span> once accepted.</li>
+      <li><strong>Rush Orders:</strong> Optional, additional fee applies for 24-48h guaranteed delivery.</li>
+      <li><strong>Revisions:</strong> One minor revision is included; additional revisions may incur extra fees.</li>
+      <li><strong>Copyright & Use:</strong> I retain ownership of the artwork until payment is complete. You may use for personal/commercial purposes after full payment.</li>
+      <li><strong>Delivery:</strong> I will deliver via Discord or Roblox messages. Ensure contact info is correct.</li>
+      <li><strong>Cancellation:</strong> Orders may be cancelled before the draft is made without penalty.</li>
+    </ul>
   </div>
+</section>
+
 
   <!-- Cursor Glow -->
   <div class="cursor-glow" id="cursorGlow"></div>
