@@ -17,7 +17,7 @@
     color: #E5E7EB;
     overflow-x: hidden;
     cursor: none;
-    font-size: 0.85rem; /* smaller base font */
+    font-size: 0.85rem;
   }
   
   .page-container {
@@ -43,12 +43,12 @@
   }
 
   h1, h2 {
-    text-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+    text-shadow: 0 0 10px rgba(147,112,219,0.6);
   }
 
   .header-title {
-    color: #8b5cf6;
-    font-size: 1.8rem; /* smaller heading */
+    color: #a78bfa;
+    font-size: 1.8rem;
   }
 
   .highlight-yellow {
@@ -127,6 +127,7 @@
     background-color: #3b82f6;
     color: #e5e7eb;
     white-space: nowrap;
+    margin-right: 0.4rem;
   }
   .price-tag.yellow {
     background-color: #f59e0b;
@@ -172,50 +173,45 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(254,215,102,1) 0%, rgba(99,102,241,0.1) 60%, transparent 100%);
+    background: radial-gradient(circle, rgba(167,139,250,1) 0%, rgba(147,112,219,0.1) 60%, transparent 100%);
     transform: translate(-50%, -50%);
     z-index: 9999;
     mix-blend-mode: lighten;
   }
 
-.carousel-container {
-  overflow: hidden;
-  border-bottom: 2px solid #4f46e5;
-  margin-bottom: 1.5rem;
-  width: 100%;
-  position: relative;
-}
-
-.carousel-wrapper {
-  display: flex;
-  width: max-content;
-  animation: scrollRight 30s linear infinite;
-}
-
-.carousel-wrapper img {
-  height: 110px;
-  border-radius: 0.8rem;
-  margin-right: 0.75rem;
-  cursor: pointer;
-  object-fit: cover;
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.carousel-wrapper img:hover {
-  transform: scale(1.05);
-}
-
-@keyframes scrollRight {
-  0% {
-    transform: translateX(0);
+  .carousel-container {
+    overflow: hidden;
+    border-bottom: 2px solid #4f46e5;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    position: relative;
   }
-  100% {
-    transform: translateX(-50%);
-  }
-}
 
-  /* Compact How to order cards */
+  .carousel-wrapper {
+    display: flex;
+    width: max-content;
+    animation: scrollRight 30s linear infinite;
+  }
+
+  .carousel-wrapper img {
+    height: 110px;
+    border-radius: 0.8rem;
+    margin-right: 0.75rem;
+    cursor: pointer;
+    object-fit: cover;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .carousel-wrapper img:hover {
+    transform: scale(1.05);
+  }
+
+  @keyframes scrollRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
   .order-step {
     background:#374151;
     padding: 0.75rem 1rem;
@@ -226,6 +222,43 @@
     margin-bottom: 1rem;
   }
 
+  /* Cart modal */
+  #cartModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-blur: 2px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  #cartContent {
+    background:#1f2937;
+    border: 2px solid #a78bfa;
+    border-radius:1rem;
+    padding:1.5rem;
+    width:350px;
+    max-height:80vh;
+    overflow-y:auto;
+    color:#e5e7eb;
+  }
+  #cartContent h2 {
+    text-align:center;
+    font-size:1.2rem;
+    margin-bottom:1rem;
+    color:#a78bfa;
+  }
+  .cart-item {
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:0.5rem;
+  }
+  .cart-total {
+    text-align:right;
+    font-weight:700;
+    margin-top:0.5rem;
+  }
 </style>
 </head>
 
@@ -242,31 +275,16 @@
         </p>
       </header>
 
-<!-- Carousel -->
-<div class="carousel-container" aria-label="Portfolio images">
-  <div class="carousel-wrapper">
-    <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="Example 1" />
-    <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="Example 2" />
-    <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="Example 3" />
-    <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="Example 4" />
-    <img src="https://i.ibb.co/8DK5nk03/IMG-20250809-WA0019.jpg" alt="Example 5" />
-    <img src="https://i.ibb.co/fdH5J5xh/aiease-17541470826512.png" alt="Example 6" />
-    <img src="https://i.ibb.co/Y49FV2P2/IMG-20250803-WA0014.jpg" alt="Example 7" />
-    <img src="https://i.ibb.co/Z69x4yGs/IMG-20250730-WA000.jpg" alt="Example 8" />
-    <img src="https://i.ibb.co/Q7dBQ8cz/IMG-20250731-WA0006.jpg" alt="Example 9" />
-    <!-- Duplicate images for smooth looping -->
-    <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="Example 1" />
-    <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="Example 2" />
-    <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="Example 3" />
-    <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="Example 4" />
-    <img src="https://i.ibb.co/8DK5nk03/IMG-20250809-WA0019.jpg" alt="Example 5" />
-    <img src="https://i.ibb.co/fdH5J5xh/aiease-17541470826512.png" alt="Example 6" />
-    <img src="https://i.ibb.co/Y49FV2P2/IMG-20250803-WA0014.jpg" alt="Example 7" />
-    <img src="https://i.ibb.co/Z69x4yGs/IMG-20250730-WA000.jpg" alt="Example 8" />
-    <img src="https://i.ibb.co/Q7dBQ8cz/IMG-20250731-WA0006.jpg" alt="Example 9" />
-  </div>
-</div>
-
+      <!-- Carousel -->
+      <div class="carousel-container" aria-label="Portfolio images">
+        <div class="carousel-wrapper">
+          <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="Example 1" />
+          <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="Example 2" />
+          <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="Example 3" />
+          <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="Example 4" />
+          <img src="https://i.ibb.co/8DK5nk03/IMG-20250809-WA0019.jpg" alt="Example 5" />
+        </div>
+      </div>
 
       <!-- Services & Pricing -->
       <section>
@@ -284,25 +302,37 @@
             <tr>
               <td><strong class="text-yellow-400">PFP - Headshot</strong></td>
               <td>Head and shoulders, basic pose/lighting.</td>
-              <td><span class="price-tag">From 10 R$</span></td>
+              <td>
+                <span class="price-tag">From 10 R$</span>
+                <button class="btn btn-purple add-to-cart" data-name="PFP - Headshot" data-price="10">Add To Cart</button>
+              </td>
               <td>Few hours</td>
             </tr>
             <tr>
               <td><strong class="text-yellow-400">PFP - Half Body</strong></td>
               <td>Torso, arms, more action/props, effects.</td>
-              <td><span class="price-tag">From 25 R$</span></td>
+              <td>
+                <span class="price-tag">From 25 R$</span>
+                <button class="btn btn-purple add-to-cart" data-name="PFP - Half Body" data-price="25">Add To Cart</button>
+              </td>
               <td>Few hours</td>
             </tr>
             <tr>
               <td><strong class="text-yellow-400">PFP - Full Body</strong></td>
               <td>Entire body, custom background/posing.</td>
-              <td><span class="price-tag">From 40 R$</span></td>
+              <td>
+                <span class="price-tag">From 40 R$</span>
+                <button class="btn btn-purple add-to-cart" data-name="PFP - Full Body" data-price="40">Add To Cart</button>
+              </td>
               <td>Few hours</td>
             </tr>
             <tr>
               <td><strong>Game Thumbnail/Ad</strong></td>
               <td>1920x1080 graphic, up to 3 characters.</td>
-              <td><span class="price-tag">From 100 R$</span></td>
+              <td>
+                <span class="price-tag">From 100 R$</span>
+                <button class="btn btn-purple add-to-cart" data-name="Game Thumbnail/Ad" data-price="100">Add To Cart</button>
+              </td>
               <td class="text-red-400 font-bold">1-2 Days</td>
             </tr>
           </tbody>
@@ -317,24 +347,33 @@
             <strong>Complex Custom Prop</strong><br />
             <small>Detailed items requiring importing.</small><br />
             <span class="price-tag yellow" style="margin-top:0.3rem; display:inline-block;">From 5 R$ per item</span>
+            <button class="btn btn-purple add-addon" data-name="Complex Custom Prop" data-price="5" data-unit="items">Add To Cart</button>
           </div>
           <div style="background:#374151; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px; border: 1px solid #d97706; font-size:0.85rem;">
             <strong>Additional Character</strong><br />
             <small>Extra posed avatar in scene.</small><br />
             <span class="price-tag yellow" style="margin-top:0.3rem; display:inline-block;">From 10 R$</span>
+            <button class="btn btn-purple add-addon" data-name="Additional Character" data-price="10" data-unit="characters">Add To Cart</button>
           </div>
           <div style="background:#374151; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px; border: 1px solid #d97706; font-size:0.85rem;">
             <strong>Detailed Environment</strong><br />
             <small>Complex 3D build.</small><br />
             <span class="price-tag yellow" style="margin-top:0.3rem; display:inline-block;">From 10 R$</span>
+            <button class="btn btn-purple add-addon" data-name="Detailed Environment" data-price="10" data-unit="environments">Add To Cart</button>
           </div>
           <div style="background:#b91c1c; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px; border: 1px solid #991b1b; color:#fee2e2; font-size:0.85rem;">
             <strong>Rush Fee (24hr)</strong><br />
             <small>Guaranteed 24–48 hours.</small><br />
             <span class="price-tag red" style="margin-top:0.3rem; display:inline-block;">From 100 R$</span>
+            <button class="btn btn-purple add-addon" data-name="Rush Fee" data-price="100" data-unit="fee">Add To Cart</button>
           </div>
         </div>
       </section>
+
+      <!-- Calculate Price Button -->
+      <div class="text-center mb-6">
+        <button id="openCartBtn" class="btn btn-purple px-4 py-1 text-sm">💰 Calculate Price</button>
+      </div>
 
       <!-- How To Order -->
       <section>
@@ -386,15 +425,10 @@
         </div>
       </section>
 
-      <!-- Terms & Conditions -->
+      <!-- Important Terms -->
       <section>
-        <h2 class="text-red-400 text-center font-bold mb-2">IMPORTANT T&Cs ⚠️</h2>
         <div class="important-terms">
-          <p><strong class="text-yellow-400">• Payment Policy:</strong> Once paid, the Robux is <span class="red">NOT REFUNDABLE</span> (due to Roblox taxes/time).</p>
-          <p><strong class="text-yellow-400">• Revisions:</strong> One round of minor revisions included. Major changes may cost an additional fee.</p>
-          <p><strong class="text-yellow-400">• Commercial Use:</strong> Misuse may result in reporting depending on severity.</p>
-          <p><strong class="text-yellow-400">• Credits:</strong> Please credit me when posting the GFX publicly.</p>
-          <p class="text-center text-gray-400 pt-1 text-xs">Thank you for considering my GFX services!</p>
+          <p><strong>Important:</strong> All sales are <span class="red">final</span>. R$ payments only. Rush fees are optional.</p>
         </div>
       </section>
     </div>
@@ -403,81 +437,88 @@
   <!-- Cursor Glow -->
   <div class="cursor-glow" id="cursorGlow"></div>
 
-  <!-- Calculator Modal -->
-  <div id="calculatorModal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex justify-center items-center hidden">
-    <div class="bg-gray-900 border border-purple-500 rounded-xl p-4 w-80 shadow-lg relative">
-      <button id="closeCalculator" class="absolute top-2 right-3 text-gray-400 hover:text-white text-xl">&times;</button>
-      <h2 class="text-xl font-bold text-purple-300 mb-3 text-center">Price Calculator</h2>
-      <div class="space-y-3 text-sm">
-        <div>
-          <label class="font-semibold text-gray-300">Service Type</label>
-          <select id="serviceType" class="w-full p-2 rounded bg-gray-800 border border-gray-700 text-gray-300 text-sm">
-            <option value="10">PFP - Headshot (From 10 R$)</option>
-            <option value="25">PFP - Half Body (From 25 R$)</option>
-            <option value="40">PFP - Full Body (From 40 R$)</option>
-            <option value="100">Game Thumbnail/Ad (From 100 R$)</option>
-          </select>
-        </div>
-        <div>
-          <label class="font-semibold text-gray-300">Add-On</label>
-          <select id="addon" class="w-full p-2 rounded bg-gray-800 border border-gray-700 text-gray-300 text-sm">
-            <option value="0">None</option>
-            <option value="5">Complex Prop (5 R$)</option>
-            <option value="10">Additional Character (10 R$)</option>
-            <option value="10">Detailed Environment (10 R$)</option>
-          </select>
-        </div>
-        <div>
-          <label class="font-semibold text-gray-300">Rush Fee (24hr)?</label>
-          <select id="rushFee" class="w-full p-2 rounded bg-gray-800 border border-gray-700 text-gray-300 text-sm">
-            <option value="0">No</option>
-            <option value="100">Yes (100 R$)</option>
-          </select>
-        </div>
-        <div class="text-center font-semibold text-purple-300 pt-2">
-          Total Price: <span id="totalPrice">0</span> R$
-        </div>
-        <div class="flex justify-center mt-3">
-          <button id="calculateBtn" class="btn btn-purple text-sm px-4 py-1">Calculate</button>
-        </div>
+  <!-- Cart Modal -->
+  <div id="cartModal">
+    <div id="cartContent">
+      <h2>Cart Summary</h2>
+      <div id="cartItems"></div>
+      <div class="cart-total">Total: R$ <span id="cartTotal">0</span></div>
+      <div style="margin-top:1rem; display:flex; justify-content:space-between;">
+        <button id="clearCart" class="btn btn-red">Clear Cart</button>
+        <button id="closeCart" class="btn btn-purple">Close</button>
       </div>
     </div>
   </div>
 
-  <script>
-    // Cursor glow follow
-    const cursorGlow = document.getElementById('cursorGlow');
-    window.addEventListener('mousemove', e => {
-      cursorGlow.style.left = e.pageX + 'px';
-      cursorGlow.style.top = e.pageY + 'px';
-    });
+<script>
+  // Cursor Glow
+  const cursor = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
 
-    // Calculator modal toggle
-    const openCalcBtn = document.getElementById('openCalculator');
-    const closeCalcBtn = document.getElementById('closeCalculator');
-    const calcModal = document.getElementById('calculatorModal');
+  // Cart System
+  let cart = [];
 
-    openCalcBtn.addEventListener('click', () => {
-      calcModal.classList.remove('hidden');
+  function updateCart() {
+    const cartItemsEl = document.getElementById('cartItems');
+    const totalEl = document.getElementById('cartTotal');
+    cartItemsEl.innerHTML = '';
+    let total = 0;
+    cart.forEach(item => {
+      const line = document.createElement('div');
+      line.className = 'cart-item';
+      line.innerHTML = `${item.name} x${item.qty} <span>R$ ${item.price * item.qty}</span>`;
+      cartItemsEl.appendChild(line);
+      total += item.price * item.qty;
     });
-    closeCalcBtn.addEventListener('click', () => {
-      calcModal.classList.add('hidden');
-    });
+    totalEl.textContent = total;
+  }
 
-    // Calculator logic
-    const serviceSelect = document.getElementById('serviceType');
-    const addonSelect = document.getElementById('addon');
-    const rushFeeSelect = document.getElementById('rushFee');
-    const totalPriceSpan = document.getElementById('totalPrice');
-    const calculateBtn = document.getElementById('calculateBtn');
+  function addToCart(name, price, qty = 1) {
+    const existing = cart.find(i => i.name === name);
+    if(existing) {
+      existing.qty += qty;
+    } else {
+      cart.push({name, price, qty});
+    }
+    updateCart();
+  }
 
-    calculateBtn.addEventListener('click', () => {
-      const servicePrice = Number(serviceSelect.value);
-      const addonPrice = Number(addonSelect.value);
-      const rushPrice = Number(rushFeeSelect.value);
-      const total = servicePrice + addonPrice + rushPrice;
-      totalPriceSpan.textContent = total;
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.dataset.name;
+      const price = parseInt(btn.dataset.price);
+      addToCart(name, price);
     });
-  </script>
+  });
+
+  document.querySelectorAll('.add-addon').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.dataset.name;
+      const price = parseInt(btn.dataset.price);
+      const unit = btn.dataset.unit;
+      let qty = parseInt(prompt(`How many ${unit}?`, "1"));
+      if(!isNaN(qty) && qty>0) {
+        addToCart(name, price, qty);
+      }
+    });
+  });
+
+  // Open / Close Cart Modal
+  const cartModal = document.getElementById('cartModal');
+  document.getElementById('openCartBtn').addEventListener('click', () => {
+    cartModal.style.display = 'flex';
+  });
+  document.getElementById('closeCart').addEventListener('click', () => {
+    cartModal.style.display = 'none';
+  });
+  document.getElementById('clearCart').addEventListener('click', () => {
+    cart = [];
+    updateCart();
+  });
+</script>
+
 </body>
 </html>
