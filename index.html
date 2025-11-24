@@ -249,6 +249,34 @@
     font-size: 1.2rem;
     color: #a78bfa;
   }
+
+  .addon-square {
+    background:#374151; 
+    padding:0.75rem; 
+    border-radius:0.5rem; 
+    flex:1; 
+    min-width:160px; 
+    border: 1px solid #d97706; 
+    font-size:0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .addon-square.rush {
+    border: 1px solid #b91c1c;
+    color:#fee2e2;
+  }
+
+  .addon-square input[type="number"] {
+    width: 60px;
+    border-radius: 0.25rem;
+    border: 1px solid #9ca3af;
+    background: #1f2937;
+    color:#e5e7eb;
+    padding: 0.15rem 0.25rem;
+  }
+
 </style>
 </head>
 
@@ -289,19 +317,22 @@
             <tr>
               <td><strong class="text-yellow-400">PFP - Headshot</strong></td>
               <td>Head and shoulders, basic pose/lighting.</td>
-              <td><span class="price-tag">10</span><button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button></td>
+              <td><span class="price-tag">10</span><button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button> 
+                <input type="number" min="1" value="1" class="item-count"></td>
               <td>Few hours</td>
             </tr>
             <tr>
               <td><strong class="text-yellow-400">PFP - Half Body</strong></td>
               <td>Torso, arms, more action/props, effects.</td>
-              <td><span class="price-tag">25</span><button class="btn btn-purple btn-sm add-cart" data-price="25">Add To Cart</button></td>
+              <td><span class="price-tag">25</span><button class="btn btn-purple btn-sm add-cart" data-price="25">Add To Cart</button> 
+                <input type="number" min="1" value="1" class="item-count"></td>
               <td>Few hours</td>
             </tr>
             <tr>
               <td><strong class="text-yellow-400">PFP - Full Body</strong></td>
               <td>Entire body, custom background/posing.</td>
-              <td><span class="price-tag">40</span><button class="btn btn-purple btn-sm add-cart" data-price="40">Add To Cart</button></td>
+              <td><span class="price-tag">40</span><button class="btn btn-purple btn-sm add-cart" data-price="40">Add To Cart</button>
+                <input type="number" min="1" value="1" class="item-count"></td>
               <td>Few hours</td>
             </tr>
             <tr>
@@ -317,32 +348,40 @@
       <section>
         <h2 class="text-indigo-400 font-bold mb-2">Add-Ons & Fees</h2>
         <div style="display:flex;gap:0.75rem; flex-wrap:wrap;">
-          <div style="background:#374151; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px; border: 1px solid #d97706; font-size:0.85rem;">
-            <strong>Complex Custom Prop</strong><br />
-            <small>Detailed items requiring importing.</small><br />
-            <span class="price-tag yellow">5</span>
-            <button class="btn btn-purple btn-sm add-cart" data-price="5">Add To Cart</button>
+          <div class="addon-square">
+            <strong>Complex Custom Prop</strong>
+            <small>Detailed items requiring importing.</small>
+            <div>
+              <span class="price-tag yellow">5</span>
+              <input type="number" min="1" value="1" class="item-count">
+              <button class="btn btn-purple btn-sm add-cart" data-price="5">Add To Cart</button>
+            </div>
           </div>
-          <div style="background:#374151; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px; border: 1px solid #d97706; font-size:0.85rem;">
-            <strong>Additional Character</strong><br />
-            <small>Extra posed avatar in scene.</small><br />
-            <span class="price-tag yellow">10</span>
-            <button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button>
+          <div class="addon-square">
+            <strong>Additional Character</strong>
+            <small>Extra posed avatar in scene.</small>
+            <div>
+              <span class="price-tag yellow">10</span>
+              <input type="number" min="1" value="1" class="item-count">
+              <button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button>
+            </div>
           </div>
-          <div style="background:#374151; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px; border: 1px solid #d97706; font-size:0.85rem;">
-            <strong>Detailed Environment</strong><br />
-            <small>Complex 3D build.</small><br />
-            <span class="price-tag yellow">10</span>
-            <button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button>
+          <div class="addon-square">
+            <strong>Detailed Environment</strong>
+            <small>Complex 3D build.</small>
+            <div>
+              <span class="price-tag yellow">10</span>
+              <button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button>
+            </div>
           </div>
-          <div style="background:#b91c1c; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px; border: 1px solid #991b1b; color:#fee2e2; font-size:0.85rem;">
-            <strong>Rush Fee (24hr)</strong><br />
-            <small>Guaranteed 24–48 hours.</small><br />
-            <span class="price-tag red">100</span>
-            <button class="btn btn-purple btn-sm add-cart" data-price="100">Add To Cart</button>
-          </div>
-          <div style="background:#374151; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px; border: 1px solid #4b5563; font-size:0.85rem;">
-            <label class="custom-checkbox"><input type="checkbox" id="commercialUse"> Commercial Use (50% off)</label>
+          <div class="addon-square rush">
+            <strong>Rush Fee (24hr)</strong>
+            <small>Guaranteed 24–48 hours.</small>
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+              <span class="price-tag red">100</span>
+              <button class="btn btn-purple btn-sm add-cart" data-price="100">Add To Cart</button>
+              <label class="custom-checkbox"><input type="checkbox" id="commercialUse"> Commercial Use (50% off)</label>
+            </div>
           </div>
         </div>
       </section>
@@ -352,62 +391,19 @@
       </div>
 
       <section>
-        <h2 class="text-indigo-400 font-bold mb-2">How To Order</h2>
-        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-          <div class="order-step">
-            <p><strong class="text-yellow-400">1. Contact & Details</strong></p>
-            <p>DM on <strong>Discord: atomiccomics</strong>.</p>
-            <div style="margin-top:0.5rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
-              <a href="https://discord.gg/invite/sgR842Gj" class="btn btn-green" target="_blank" rel="noopener noreferrer">Contact Me</a>
-              <a href="https://roblox.com/users/6068424293/profile" class="btn btn-blue" target="_blank" rel="noopener noreferrer">Roblox Profile</a>
-            </div>
-          </div>
-
-          <div class="order-step">
-            <p><strong class="text-yellow-400">2. Quote & Draft</strong></p>
-            <p>I return a draft for review.</p>
-          </div>
-
-          <div class="order-step">
-            <p><strong class="text-yellow-400">3. Revisions & Approval</strong></p>
-            <p>One round of minor revisions.</p>
-          </div>
-
-          <div class="order-step">
-            <p><strong class="text-yellow-400">4. Payment & Delivery</strong></p>
-            <p>Payment after approval.</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="text-indigo-400 font-bold mb-2">FAQ & Rules</h2>
-        <div>
-          <div class="faq-item">
-            <strong>Q: How long does a commission take?</strong><br />
-            Headshot/half-body: Few hours.
-          </div>
-          <div class="faq-item">
-            <strong>Q: Can I request revisions?</strong><br />
-            One minor revision included.
-          </div>
-          <div class="faq-item">
-            <strong>Q: Payment method?</strong><br />
-            Robux only.
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="text-red-400 text-center font-bold mb-2">IMPORTANT T&Cs ⚠️</h2>
+        <h2 class="text-red-400 text-center font-bold mb-2">Terms of Service ⚠️</h2>
         <div class="important-terms">
-          <p><strong class="text-yellow-400">• Payment Policy:</strong> Once paid, the Robux is <span class="red">NOT REFUNDABLE</span> (due to Roblox taxes/time).</p>
-          <p><strong class="text-yellow-400">• Revisions:</strong> One round of minor revisions included. Major changes may cost an additional fee.</p>
-          <p><strong class="text-yellow-400">• Commercial Use:</strong> You get a 50% discount on a commission <strong>ONLY IF YOU ARE REALLY USING IT FOR COMMERCIAL USE. IF YOU ARE CAUGHT LYING, I WILL REPORT YOU.</strong></p>
-          <p><strong class="text-yellow-400">• Credits:</strong> Please credit me when posting the GFX publicly.</p>
+          <p><strong>• Payment Policy:</strong> Once paid, the Robux is <span class="red">NOT REFUNDABLE</span> (due to Roblox taxes/time).</p>
+          <p><strong>• Revisions:</strong> One round of minor revisions included. Major changes may cost an additional fee.</p>
+          <p><strong>• Commercial Use:</strong> You get a 50% discount on a commission <strong>ONLY IF YOU ARE REALLY USING IT FOR COMMERCIAL USE. IF YOU ARE CAUGHT LYING, I WILL REPORT YOU.</strong></p>
+          <p><strong>• Copyright:</strong> All artworks remain my property until fully paid.</p>
+          <p><strong>• Credits:</strong> Please credit me when posting the GFX publicly.</p>
+          <p><strong>• Behavior:</strong> I reserve the right to refuse service to anyone abusive or breaking rules.</p>
+          <p><strong>• Delivery:</strong> I may provide files in PNG/JPG only; PSD or source files are extra if requested.</p>
           <p class="text-center text-gray-400 pt-1 text-xs">Thank you for considering my GFX commissions! I appreciate your support and honesty.</p>
         </div>
       </section>
+
     </div>
   </div>
 
@@ -428,7 +424,9 @@
       let total = 0;
       addCartBtns.forEach(btn => {
         if(btn.dataset.selected === 'true') {
-          total += parseInt(btn.dataset.price);
+          let countInput = btn.parentElement.querySelector('.item-count');
+          let count = countInput ? parseInt(countInput.value) : 1;
+          total += parseInt(btn.dataset.price) * count;
         }
       });
       if(commercialCheckbox.checked) total *= 0.5;
