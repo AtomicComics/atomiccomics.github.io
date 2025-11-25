@@ -20,321 +20,333 @@
     font-size: 0.85rem;
   }
 
-  .page-container {
-    min-height: 100vh;
-    width: 100%;
-    padding: 1rem 2rem;
+  .page-container { min-height: 100vh; width: 100%; padding: 1rem 2rem; box-sizing: border-box;
     background: radial-gradient(circle at top left, rgba(147,112,219,0.25), transparent 40%),
                 radial-gradient(circle at bottom right, rgba(99,102,241,0.2), transparent 50%);
-    display: flex;
-    flex-direction: column;
-  }
+    display:flex; flex-direction:column; }
 
   .sheet {
-    background-color: #1F2937;
-    border-radius: 16px;
-    border: 2px solid #4F46E5;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem 2rem;
+    background-color:#1F2937; border-radius:16px; border:2px solid #4F46E5;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6); flex-grow:1; display:flex; flex-direction:column;
+    padding:1.5rem 2rem;
   }
 
-  h1, h2 {
-    text-shadow: 0 0 10px rgba(147,112,219,0.6);
-  }
+  h1, h2 { text-shadow:0 0 10px rgba(147,112,219,0.6); }
 
-  .header-title {
-    color: #a78bfa;
-    font-size: 1.8rem;
-  }
+  .cursor-glow { position:fixed; pointer-events:none; width:80px; height:80px;
+    border-radius:50%; background:radial-gradient(circle, rgba(167,139,250,0.6) 0%, rgba(167,139,250,0.2) 50%, transparent 100%);
+    transform:translate(-50%, -50%); z-index:99999; mix-blend-mode:screen; }
 
-  .highlight-yellow {
-    color: #facc15;
-    font-weight: 700;
-  }
+  .price-tag { padding:0.15rem 0.5rem; border-radius:9999px; font-weight:700;
+    font-size:0.7rem; background:#3b82f6; color:#e5e7eb; margin-left:0.5rem; }
+  .price-tag.yellow { background:#f59e0b; }
+  .price-tag.red { background:#dc2626; }
 
-  .btn {
-    display: inline-block;
-    font-weight: 700;
-    border-radius: 9999px;
-    padding: 0.3rem 0.8rem;
-    cursor: pointer;
-    transition: 0.25s ease;
-    font-size: 0.75rem;
-    border: 3px solid transparent;
-  }
+  .btn { display:inline-block; font-weight:700; border-radius:9999px; padding:0.3rem 0.8rem;
+    cursor:pointer; transition:0.25s; border:3px solid transparent; user-select:none; font-size:0.75rem; }
+  .btn-purple { background:linear-gradient(90deg,#a78bfa,#f472b6); border-color:#7c3aed; }
+  .btn-purple:hover { transform:scale(1.05); }
 
-  .btn-purple {
-    background: linear-gradient(90deg, #a78bfa, #f472b6);
-    color: #1f2937;
-    border-color: #7c3aed;
-  }
-  .btn-purple:hover {
-    background: linear-gradient(90deg, #7c3aed, #ec4899);
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.5rem;
-  }
-  thead {
-    background-color: #7c3aed;
-    color: white;
-  }
-  th, td {
-    padding: 0.5rem 0.75rem;
-    border-bottom: 1px solid #374151;
-  }
-
-  /* Highlight selected service */
-  .service-row.selected {
-    background-color: #4c1d95 !important;
-    box-shadow: inset 0 0 10px #a78bfa;
-  }
-
-  .price-tag {
-    display: inline-block;
-    padding: 0.15rem 0.5rem;
-    border-radius: 9999px;
-    font-weight: 700;
-    font-size: 0.7rem;
-    background-color: #3b82f6;
-    color: #e5e7eb;
-    white-space: nowrap;
-  }
-  .price-tag.yellow { background-color: #f59e0b; }
-  .price-tag.red { background-color: #dc2626; }
-
-  .addon-square {
-    background:#374151;
-    padding:0.75rem;
-    border-radius:0.5rem;
-    min-width:160px;
-    border: 1px solid #d97706;
-  }
-  .addon-square.rush {
-    border: 1px solid #b91c1c;
-  }
+  .addon-square { background:#374151; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px;
+    border:1px solid #d97706; font-size:0.85rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .addon-square.rush { border:1px solid #b91c1c; }
 
   .addon-square input[type="number"] {
-    width: 60px;
-    background: #1f2937;
-    color:#e5e7eb;
-    border: 1px solid #9ca3af;
+    width: 55px; background:#1f2937; border:1px solid #9ca3af; border-radius:0.25rem; color:white;
   }
 
-  .cursor-glow {
+  .carousel-container { overflow:hidden; border-bottom:2px solid #4f46e5; margin-bottom:1.5rem; }
+  .carousel-wrapper { display:flex; width:max-content; animation:scrollRight 30s linear infinite; }
+  .carousel-wrapper img { height:110px; border-radius:0.8rem; margin-right:0.75rem; }
+
+  @keyframes scrollRight {
+    0% { transform:translateX(0); }
+    100% { transform:translateX(-50%); }
+  }
+
+  .faq-item { background:#374151; border-radius:0.4rem; padding:0.75rem; margin-bottom:0.8rem; }
+  .order-step { background:#374151; padding:0.75rem; border-radius:0.5rem; border:1px solid #4b5563; }
+
+  .highlight-selected {
+    outline: 3px solid #a78bfa;
+    background:#4b5563 !important;
+  }
+
+  /* Shopping cart UI */
+  #cartPanel {
     position: fixed;
-    pointer-events: none;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(167,139,250,0.6), transparent 70%);
-    transform: translate(-50%, -50%);
-    z-index: 9999;
+    right: 20px;
+    top: 20px;
+    width: 260px;
+    background:#1f2937;
+    border:2px solid #7c3aed;
+    border-radius:10px;
+    padding:1rem;
+    z-index:9999;
+    box-shadow:0 0 20px #7c3aedaa;
+  }
+
+  #cartItems { max-height:280px; overflow-y:auto; margin-bottom:0.5rem; }
+
+  .cart-item {
+    display:flex; justify-content:space-between; padding:0.35rem 0;
+    border-bottom:1px solid #4b5563; animation:fall 0.6s ease-out;
+  }
+
+  @keyframes fall {
+    0% { transform:translateY(-20px); opacity:0; }
+    100% { transform:translateY(0); opacity:1; }
   }
 </style>
 </head>
 
 <body>
-  <div class="page-container">
-    <div class="sheet">
+<div class="page-container">
+<div class="sheet">
 
-      <header class="text-center mb-6">
-        <h1 class="font-extrabold header-title">
-          <span class="highlight-yellow">Nico's</span> GFX Commission Sheet
-        </h1>
-        <p class="text-gray-400 text-sm">Status: <span class="text-green-400">OPEN</span></p>
-      </header>
+<header class="text-center mb-6">
+  <h1 class="font-extrabold header-title">
+    <span class="text-yellow-400">Nico's</span> GFX Commission Sheet
+  </h1>
+  <p class="text-gray-400 mt-1 text-sm">
+    Status: <span class="font-bold text-green-400">OPEN</span> | Software: Roblox Studio & PhotoPea
+  </p>
+</header>
 
-      <!-- ---------- SERVICES ---------- -->
-      <section>
-        <h2 class="text-indigo-400 font-bold mb-2">Services & Pricing (Robux R$)</h2>
-        <table>
-          <thead>
-            <tr><th>Service</th><th>Description</th><th>Price</th><th>Time</th></tr>
-          </thead>
-          <tbody>
-
-            <!-- Service rows (no quantity inputs) -->
-            <tr class="service-row">
-              <td><strong class="text-yellow-400">PFP - Headshot</strong></td>
-              <td>Head and shoulders.</td>
-              <td>
-                <span class="price-tag">10</span>
-                <button class="btn btn-purple btn-sm service-btn" data-name="PFP - Headshot" data-price="10">Select</button>
-              </td>
-              <td>Few hours</td>
-            </tr>
-
-            <tr class="service-row">
-              <td><strong class="text-yellow-400">PFP - Half Body</strong></td>
-              <td>Torso, arms, dynamic posing.</td>
-              <td>
-                <span class="price-tag">25</span>
-                <button class="btn btn-purple btn-sm service-btn" data-name="PFP - Half Body" data-price="25">Select</button>
-              </td>
-              <td>Few hours</td>
-            </tr>
-
-            <tr class="service-row">
-              <td><strong class="text-yellow-400">PFP - Full Body</strong></td>
-              <td>Full character + background.</td>
-              <td>
-                <span class="price-tag">40</span>
-                <button class="btn btn-purple btn-sm service-btn" data-name="PFP - Full Body" data-price="40">Select</button>
-              </td>
-              <td>Few hours</td>
-            </tr>
-
-            <tr class="service-row">
-              <td><strong>Game Thumbnail/Ad</strong></td>
-              <td>1080p graphic.</td>
-              <td>
-                <span class="price-tag">100</span>
-                <button class="btn btn-purple btn-sm service-btn" data-name="Game Thumbnail" data-price="100">Select</button>
-              </td>
-              <td class="text-red-400">1-2 Days</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ---------- ADDONS ---------- -->
-      <section>
-        <h2 class="text-indigo-400 font-bold mb-2">Add-Ons & Fees</h2>
-
-        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-
-          <!-- Has quantity -->
-          <div class="addon-square">
-            <strong>Complex Custom Prop</strong>
-            <small>Imported detailed asset.</small>
-            <div>
-              <span class="price-tag yellow">5</span>
-              <input type="number" value="1" min="1" class="item-count">
-              <button class="btn btn-purple btn-sm add-cart" data-price="5">Add</button>
-            </div>
-          </div>
-
-          <!-- Has quantity -->
-          <div class="addon-square">
-            <strong>Additional Character</strong>
-            <small>Extra fully posed avatar.</small>
-            <div>
-              <span class="price-tag yellow">10</span>
-              <input type="number" value="1" min="1" class="item-count">
-              <button class="btn btn-purple btn-sm add-cart" data-price="10">Add</button>
-            </div>
-          </div>
-
-          <!-- No quantity -->
-          <div class="addon-square">
-            <strong>Detailed Environment</strong>
-            <small>Complex 3D scene.</small>
-            <div>
-              <span class="price-tag yellow">10</span>
-              <button class="btn btn-purple btn-sm add-cart" data-price="10">Add</button>
-            </div>
-          </div>
-
-          <!-- No quantity -->
-          <div class="addon-square rush">
-            <strong>Rush Fee (24hr)</strong>
-            <small>Fast delivery.</small>
-            <div>
-              <span class="price-tag red">100</span>
-              <button class="btn btn-purple btn-sm add-cart" data-price="100">Add</button>
-            </div>
-          </div>
-
-          <!-- Commercial Use moved out -->
-          <div class="addon-square" style="border:1px solid #7c3aed;">
-            <strong>Commercial Use</strong>
-            <small>50% discount on total.</small>
-            <label class="custom-checkbox" style="margin-top:0.5rem;">
-              <input type="checkbox" id="commercialUse"> Enable
-            </label>
-          </div>
-
-        </div>
-      </section>
-
-      <div class="text-center">
-        <button id="calcPriceBtn" class="btn btn-purple">Calculate Price</button>
-      </div>
-
-    </div>
+<div class="carousel-container">
+  <div class="carousel-wrapper">
+    <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" />
+    <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" />
+    <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" />
+    <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" />
+    <img src="https://i.ibb.co/8DK5nk03/IMG-20250809-WA0019.jpg" />
   </div>
+</div>
 
-  <div class="cursor-glow" id="cursorGlow"></div>
+<section>
+  <h2 class="text-indigo-400 font-bold mb-2">Services & Pricing (Robux R$)</h2>
+  <table>
+    <thead>
+      <tr><th>Service</th><th>Description</th><th>Price</th><th>Time</th></tr>
+    </thead>
+    <tbody>
 
-<!-- ---------- SCRIPT ---------- -->
+      <tr>
+        <td><strong class="text-yellow-400">PFP - Headshot</strong></td>
+        <td>Head and shoulders, basic pose/lighting.</td>
+        <td>
+          <span class="price-tag">10</span>
+          <button class="btn btn-purple select-service" data-price="10" data-name="PFP - Headshot">Select</button>
+        </td>
+        <td>Few hours</td>
+      </tr>
+
+      <tr>
+        <td><strong class="text-yellow-400">PFP - Half Body</strong></td>
+        <td>Torso, arms, more action.</td>
+        <td>
+          <span class="price-tag">25</span>
+          <button class="btn btn-purple select-service" data-price="25" data-name="PFP - Half Body">Select</button>
+        </td>
+        <td>Few hours</td>
+      </tr>
+
+      <tr>
+        <td><strong class="text-yellow-400">PFP - Full Body</strong></td>
+        <td>Entire body, custom background.</td>
+        <td>
+          <span class="price-tag">40</span>
+          <button class="btn btn-purple select-service" data-price="40" data-name="PFP - Full Body">Select</button>
+        </td>
+        <td>Few hours</td>
+      </tr>
+
+      <tr>
+        <td><strong>Game Thumbnail</strong></td>
+        <td>1920x1080 graphic.</td>
+        <td>
+          <span class="price-tag">100</span>
+          <button class="btn btn-purple select-service" data-price="100" data-name="Game Thumbnail">Select</button>
+        </td>
+        <td class="text-red-400 font-bold">1-2 Days</td>
+      </tr>
+
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2 class="text-indigo-400 font-bold mb-2">Add-Ons & Fees</h2>
+  <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+
+    <!-- complex prop -->
+    <div class="addon-square">
+      <strong>Complex Custom Prop</strong>
+      <small>Detailed imported item.</small>
+      <div>
+        <span class="price-tag yellow">5</span>
+        <input type="number" min="1" value="1" class="addon-count">
+        <button class="btn btn-purple add-addon" data-price="5" data-name="Complex Prop">Add</button>
+      </div>
+    </div>
+
+    <!-- additional character -->
+    <div class="addon-square">
+      <strong>Additional Character</strong>
+      <small>Extra avatar.</small>
+      <div>
+        <span class="price-tag yellow">10</span>
+        <input type="number" min="1" value="1" class="addon-count">
+        <button class="btn btn-purple add-addon" data-price="10" data-name="Additional Character">Add</button>
+      </div>
+    </div>
+
+    <!-- no quantity -->
+    <div class="addon-square">
+      <strong>Detailed Environment</strong>
+      <small>Complex 3D scene.</small>
+      <div>
+        <span class="price-tag yellow">10</span>
+        <button class="btn btn-purple add-addon" data-price="10" data-name="Detailed Environment">Add</button>
+      </div>
+    </div>
+
+    <!-- rush -->
+    <div class="addon-square rush">
+      <strong>Rush Fee (24hr)</strong>
+      <small>Guaranteed fast.</small>
+      <div>
+        <span class="price-tag red">100</span>
+        <button class="btn btn-purple add-addon" data-price="100" data-name="Rush Fee">Add</button>
+      </div>
+    </div>
+
+    <!-- commercial separate -->
+    <div class="addon-square" style="border-color:#7c3aed;">
+      <strong>Commercial Use</strong>
+      <small>50% discount applied.</small>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="commercialUse"> Enable
+      </label>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2 class="text-indigo-400 font-bold mb-2">How To Order</h2>
+  <div class="order-step">1. Choose your service.</div>
+  <div class="order-step">2. Add your preferred add-ons.</div>
+  <div class="order-step">3. Contact me on Discord.</div>
+</section>
+
+<section>
+  <h2 class="text-indigo-400 font-bold mb-2">FAQ</h2>
+  <div class="faq-item"><strong>Q:</strong> How long does a render take?<br>A: A few hours to a day.</div>
+  <div class="faq-item"><strong>Q:</strong> Can I request changes?<br>A: Minor revisions only.</div>
+  <div class="faq-item"><strong>Q:</strong> Do you accept large projects?<br>A: Yes, message me.</div>
+</section>
+
+<section>
+  <h2 class="text-red-400 text-center font-bold mb-2">Terms of Service ⚠️</h2>
+  <div class="important-terms">
+    <p><strong>• Payment Policy:</strong> No refunds.</p>
+    <p><strong>• Revisions:</strong> One minor revision included.</p>
+    <p><strong>• Commercial Use:</strong> 50% discount only if truly commercial.</p>
+    <p><strong>• Credits:</strong> Credit me when posted.</p>
+  </div>
+</section>
+
+</div></div>
+
+<!-- CART PANEL -->
+<div id="cartPanel">
+  <h3 class="text-lg font-bold mb-2">🛒 Cart</h3>
+  <div id="cartItems"></div>
+  <div class="text-right font-bold text-purple-300">Total: <span id="cartTotal">0</span> R$</div>
+</div>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
 <script>
-/* Cursor Glow */
-const cursorGlow = document.getElementById("cursorGlow");
-window.addEventListener("mousemove", e => {
-  cursorGlow.style.left = e.pageX + "px";
-  cursorGlow.style.top = e.pageY + "px";
+const cursorGlow=document.getElementById("cursorGlow");
+window.addEventListener("mousemove",e=>{
+  cursorGlow.style.left=e.pageX+"px"; cursorGlow.style.top=e.pageY+"px";
 });
 
-/* ----- Only one service selectable ----- */
-const serviceBtns = document.querySelectorAll(".service-btn");
-const serviceRows = document.querySelectorAll(".service-row");
-let chosenService = null;
+/* CART */
+let cart=[];
+const cartItems=document.getElementById("cartItems");
+const cartTotal=document.getElementById("cartTotal");
+const commercial=document.getElementById("commercialUse");
 
-serviceBtns.forEach((btn, i) => {
-  btn.addEventListener("click", () => {
-    serviceRows.forEach(r => r.classList.remove("selected"));
-    serviceBtns.forEach(b => b.classList.remove("selected"));
+function updateCart(){
+  cartItems.innerHTML="";
+  let total=0;
 
-    btn.classList.add("selected");
-    serviceRows[i].classList.add("selected");
-
-    chosenService = {
-      name: btn.dataset.name,
-      price: parseInt(btn.dataset.price)
-    };
+  cart.forEach(i=>{
+    total+=i.price*i.qty;
+    let div=document.createElement("div");
+    div.className="cart-item";
+    div.innerHTML=`<span>${i.name} x${i.qty}</span><span>${i.price*i.qty} R$</span>`;
+    cartItems.appendChild(div);
   });
-});
 
-/* ----- Add-ons ----- */
-const addCartBtns = document.querySelectorAll('.add-cart');
-addCartBtns.forEach(btn => {
-  btn.dataset.selected = "false";
-  btn.addEventListener("click", () => {
-    btn.dataset.selected = btn.dataset.selected === "true" ? "false" : "true";
-    btn.style.backgroundColor = btn.dataset.selected === "true" ? "#ec4899" : "";
-  });
-});
+  if(commercial.checked) total*=0.5;
 
-/* ----- Calculate Price ----- */
-document.getElementById("calcPriceBtn").addEventListener("click", () => {
-  let total = 0;
+  cartTotal.textContent=total;
+}
 
-  if (chosenService) {
-    total += chosenService.price;
-  }
+/* Only 1 service */
+const serviceBtns=document.querySelectorAll(".select-service");
+let selectedService=null;
 
-  addCartBtns.forEach(btn => {
-    if(btn.dataset.selected === "true") {
-      let count = 1;
-      let input = btn.parentElement.querySelector(".item-count");
-      if (input) count = parseInt(input.value);
-      total += parseInt(btn.dataset.price) * count;
+serviceBtns.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    serviceBtns.forEach(b=>b.classList.remove("highlight-selected"));
+
+    if(selectedService===btn){
+      selectedService=null;
+      cart=cart.filter(i=>i.type!=="service");
+      updateCart();
+      btn.classList.remove("highlight-selected");
+      return;
     }
+
+    selectedService=btn;
+    btn.classList.add("highlight-selected");
+
+    cart=cart.filter(i=>i.type!=="service");
+    cart.unshift({
+      name:btn.dataset.name,
+      price:parseInt(btn.dataset.price),
+      qty:1,
+      type:"service"
+    });
+
+    updateCart();
   });
-
-  if (document.getElementById("commercialUse").checked) {
-    total *= 0.5;
-  }
-
-  alert("Total price: R$" + total);
 });
+
+/* Add-ons */
+document.querySelectorAll(".add-addon").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    let qtyInput=btn.parentElement.querySelector(".addon-count");
+    let qty=qtyInput?parseInt(qtyInput.value):1;
+
+    cart.push({
+      name:btn.dataset.name,
+      price:parseInt(btn.dataset.price),
+      qty:qty,
+      type:"addon"
+    });
+
+    updateCart();
+  });
+});
+
+commercial.addEventListener("change",updateCart);
 </script>
+
 </body>
 </html>
