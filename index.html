@@ -9,94 +9,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
 <style>
-  body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #111827;
-    color: #E5E7EB;
-    overflow-x: hidden;
-    cursor: none;
-    font-size: 0.85rem;
-  }
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #111827;
+  color: #E5E7EB;
+  overflow-x: hidden;
+  cursor: none;
+  font-size: 0.85rem;
+}
 
-  .page-container { min-height: 100vh; width: 100%; padding: 1rem 2rem; box-sizing: border-box;
-    background: radial-gradient(circle at top left, rgba(147,112,219,0.25), transparent 40%),
-                radial-gradient(circle at bottom right, rgba(99,102,241,0.2), transparent 50%);
-    display:flex; flex-direction:column; }
+.page-container { 
+  min-height: 100vh; width: 100%; padding: 1rem 2rem; box-sizing: border-box;
+  background: radial-gradient(circle at top left, rgba(147,112,219,0.25), transparent 40%),
+              radial-gradient(circle at bottom right, rgba(99,102,241,0.2), transparent 50%);
+  display:flex; flex-direction:column;
+}
 
-  .sheet {
-    background-color:#1F2937; border-radius:16px; border:2px solid #4F46E5;
-    box-shadow:0 10px 30px rgba(0,0,0,0.6); flex-grow:1; display:flex; flex-direction:column;
-    padding:1.5rem 2rem;
-  }
+.sheet {
+  background-color:#1F2937; border-radius:16px; border:2px solid #4F46E5;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6); flex-grow:1; display:flex; flex-direction:column;
+  padding:1.5rem 2rem;
+}
 
-  h1, h2 { text-shadow:0 0 10px rgba(147,112,219,0.6); }
+h1, h2 { text-shadow:0 0 10px rgba(147,112,219,0.6); }
 
-  .cursor-glow { position:fixed; pointer-events:none; width:80px; height:80px;
-    border-radius:50%; background:radial-gradient(circle, rgba(167,139,250,0.6) 0%, rgba(167,139,250,0.2) 50%, transparent 100%);
-    transform:translate(-50%, -50%); z-index:99999; mix-blend-mode:screen; }
+.cursor-glow, #customCursor { position:fixed; pointer-events:none; border-radius:50%; mix-blend-mode:screen; z-index:99999; }
+.cursor-glow { width:120px; height:120px; background: radial-gradient(circle, rgba(167,139,250,0.6) 0%, rgba(167,139,250,0.1) 50%, transparent 100%); transform:translate(-50%, -50%); filter: blur(15px);}
+#customCursor { width:40px; height:40px; background: url('https://i.ibb.co/3y8CJ4C/purple-cursor.png') no-repeat center/contain; transition: transform 0.1s ease, background 0.15s ease; }
 
-  .price-tag { padding:0.15rem 0.5rem; border-radius:9999px; font-weight:700;
-    font-size:0.7rem; background:#3b82f6; color:#e5e7eb; margin-left:0.5rem; }
-  .price-tag.yellow { background:#f59e0b; }
-  .price-tag.red { background:#dc2626; }
+.price-tag { padding:0.15rem 0.5rem; border-radius:9999px; font-weight:700; font-size:0.7rem; background:#3b82f6; color:#e5e7eb; margin-left:0.5rem; }
+.price-tag.yellow { background:#f59e0b; }
+.price-tag.red { background:#dc2626; }
 
-  .btn { display:inline-block; font-weight:700; border-radius:9999px; padding:0.3rem 0.8rem;
-    cursor:pointer; transition:0.25s; border:3px solid transparent; user-select:none; font-size:0.75rem; }
-  .btn-purple { background:linear-gradient(90deg,#a78bfa,#f472b6); border-color:#7c3aed; }
-  .btn-purple:hover { transform:scale(1.05); }
+.btn { display:inline-block; font-weight:700; border-radius:9999px; padding:0.3rem 0.8rem; cursor:pointer; transition:0.25s; border:3px solid transparent; user-select:none; font-size:0.75rem; }
+.btn-purple { background:linear-gradient(90deg,#a78bfa,#f472b6); border-color:#7c3aed; }
+.btn-purple:hover { transform:scale(1.05); }
 
-  .addon-square { background:#374151; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px;
-    border:1px solid #d97706; font-size:0.85rem; display:flex; flex-direction:column; gap:0.5rem; }
-  .addon-square.rush { border:1px solid #b91c1c; }
+.addon-square { background:#374151; padding:0.75rem; border-radius:0.5rem; flex:1; min-width:160px; border:1px solid #d97706; font-size:0.85rem; display:flex; flex-direction:column; gap:0.5rem; }
+.addon-square.rush { border:1px solid #b91c1c; }
+.addon-square input[type="number"] { width: 55px; background:#1f2937; border:1px solid #9ca3af; border-radius:0.25rem; color:white; }
 
-  .addon-square input[type="number"] {
-    width: 55px; background:#1f2937; border:1px solid #9ca3af; border-radius:0.25rem; color:white;
-  }
+.carousel-container { overflow:hidden; border-bottom:2px solid #4f46e5; margin-bottom:1.5rem; }
+.carousel-wrapper { display:flex; width:max-content; animation:scrollRight 30s linear infinite; }
+.carousel-wrapper img { height:110px; border-radius:0.8rem; margin-right:0.75rem; }
 
-  .carousel-container { overflow:hidden; border-bottom:2px solid #4f46e5; margin-bottom:1.5rem; }
-  .carousel-wrapper { display:flex; width:max-content; animation:scrollRight 30s linear infinite; }
-  .carousel-wrapper img { height:110px; border-radius:0.8rem; margin-right:0.75rem; }
+@keyframes scrollRight { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
 
-  @keyframes scrollRight {
-    0% { transform:translateX(0); }
-    100% { transform:translateX(-50%); }
-  }
+.faq-item { background:#374151; border-radius:0.4rem; padding:0.75rem; margin-bottom:0.8rem; }
+.order-step { background:#374151; padding:0.75rem; border-radius:0.5rem; border:1px solid #4b5563; }
 
-  .faq-item { background:#374151; border-radius:0.4rem; padding:0.75rem; margin-bottom:0.8rem; }
-  .order-step { background:#374151; padding:0.75rem; border-radius:0.5rem; border:1px solid #4b5563; }
+.highlight-selected { outline: 3px solid #a78bfa; background:#4b5563 !important; }
 
-  .highlight-selected {
-    outline: 3px solid #a78bfa;
-    background:#4b5563 !important;
-  }
+#cartPanel { position: fixed; right: 20px; top: 20px; width: 260px; background:#1f2937; border:2px solid #7c3aed; border-radius:10px; padding:1rem; z-index:9999; box-shadow:0 0 20px #7c3aedaa; }
+#cartItems { max-height:280px; overflow-y:auto; margin-bottom:0.5rem; }
+.cart-item { display:flex; justify-content:space-between; padding:0.35rem 0; border-bottom:1px solid #4b5563; animation:fall 0.6s ease-out; }
+@keyframes fall { 0% { transform:translateY(-20px); opacity:0; } 100% { transform:translateY(0); opacity:1; } }
 
-  /* Shopping cart UI */
-  #cartPanel {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    width: 260px;
-    background:#1f2937;
-    border:2px solid #7c3aed;
-    border-radius:10px;
-    padding:1rem;
-    z-index:9999;
-    box-shadow:0 0 20px #7c3aedaa;
-  }
+.service-card { background:#292E42; border-radius:1rem; border:2px solid #a78bfa; padding:1rem; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; perspective:1000px; box-shadow:0 0 15px rgba(167,139,250,0.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.service-card h3 { font-weight:700; font-size:1rem; }
+.service-card p { flex-grow:1; margin-bottom:0.5rem; }
 
-  #cartItems { max-height:280px; overflow-y:auto; margin-bottom:0.5rem; }
-
-  .cart-item {
-    display:flex; justify-content:space-between; padding:0.35rem 0;
-    border-bottom:1px solid #4b5563; animation:fall 0.6s ease-out;
-  }
-
-  @keyframes fall {
-    0% { transform:translateY(-20px); opacity:0; }
-    100% { transform:translateY(0); opacity:1; }
-  }
+.modal-bg { position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); display:none; justify-content:center; align-items:center; z-index: 9999; }
+.modal-card { background:#1F2937; border-radius:1rem; padding:2rem; transform: scale(0); transition: transform 0.3s ease; box-shadow:0 0 30px #a78bfa; max-width:500px; width:90%; }
 </style>
 </head>
 
@@ -124,16 +100,7 @@
     <img src="https://i.ibb.co/Y49FV2P2/IMG-20250803-WA0014.jpg" alt="Example 7" />
     <img src="https://i.ibb.co/Z69x4yGs/IMG-20250730-WA000.jpg" alt="Example 8" />
     <img src="https://i.ibb.co/Q7dBQ8cz/IMG-20250731-WA0006.jpg" alt="Example 9" />
-    <!-- Duplicate images for smooth looping -->
-    <img src="https://i.ibb.co/CK4M3XVy/Roblox-Screen-Shot20250807-230246009.png" alt="Example 1" />
-    <img src="https://i.ibb.co/5WJQwL4T/IMG-20250807-WA0001.jpg" alt="Example 2" />
-    <img src="https://i.ibb.co/mVNYRc9z/IMG-20250803-WA0015.jpg" alt="Example 3" />
-    <img src="https://i.ibb.co/FkqvzC0S/IMG-20250730-WA0001.jpg" alt="Example 4" />
-    <img src="https://i.ibb.co/8DK5nk03/IMG-20250809-WA0019.jpg" alt="Example 5" />
-    <img src="https://i.ibb.co/fdH5J5xh/aiease-17541470826512.png" alt="Example 6" />
-    <img src="https://i.ibb.co/Y49FV2P2/IMG-20250803-WA0014.jpg" alt="Example 7" />
-    <img src="https://i.ibb.co/Z69x4yGs/IMG-20250730-WA000.jpg" alt="Example 8" />
-    <img src="https://i.ibb.co/Q7dBQ8cz/IMG-20250731-WA0006.jpg" alt="Example 9" />
+    <!-- duplicate for looping -->
   </div>
 </div>
 
@@ -141,240 +108,113 @@
   <h2 class="text-indigo-400 font-bold mb-4 text-center">Services & Pricing (Robux R$)</h2>
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-    <!-- PFP - Headshot -->
-    <div class="bg-gray-800 p-4 rounded-xl border-2 border-purple-700 shadow-lg flex flex-col">
+    <!-- Wrap existing service divs into service-card -->
+    <div class="service-card glow-outline" data-name="PFP - Headshot" data-price="10">
       <h3 class="text-yellow-400 font-bold mb-2">PFP - Headshot</h3>
-      <p class="flex-grow mb-2">Head and shoulders, basic pose/lighting.</p>
+      <p>Head and shoulders, basic pose/lighting.</p>
       <div class="flex items-center justify-between mt-auto">
-        <span class="price-tag">From 10 (negotiable on how difficult it will be)</span>
-        <button class="btn btn-purple select-service" data-price="10" data-name="PFP - Headshot">Select</button>
+        <span class="price-tag">From 10</span>
       </div>
       <p class="text-gray-400 text-sm mt-2">Few hours</p>
     </div>
 
-    <!-- PFP - Half Body -->
-    <div class="bg-gray-800 p-4 rounded-xl border-2 border-purple-700 shadow-lg flex flex-col">
+    <div class="service-card glow-outline" data-name="PFP - Half Body" data-price="25">
       <h3 class="text-yellow-400 font-bold mb-2">PFP - Half Body</h3>
-      <p class="flex-grow mb-2">Torso, arms, more action.</p>
+      <p>Torso, arms, more action.</p>
       <div class="flex items-center justify-between mt-auto">
-        <span class="price-tag">From 25 (negotiable on how difficult it will be)</span>
-        <button class="btn btn-purple select-service" data-price="25" data-name="PFP - Half Body">Select</button>
+        <span class="price-tag">From 25</span>
       </div>
       <p class="text-gray-400 text-sm mt-2">Few hours</p>
     </div>
 
-    <!-- PFP - Full Body -->
-    <div class="bg-gray-800 p-4 rounded-xl border-2 border-purple-700 shadow-lg flex flex-col">
+    <div class="service-card glow-outline" data-name="PFP - Full Body" data-price="40">
       <h3 class="text-yellow-400 font-bold mb-2">PFP - Full Body</h3>
-      <p class="flex-grow mb-2">Entire body, custom background.</p>
+      <p>Entire body, custom background.</p>
       <div class="flex items-center justify-between mt-auto">
-        <span class="price-tag">From 40 (negotiable on how difficult it will be)</span>
-        <button class="btn btn-purple select-service" data-price="40" data-name="PFP - Full Body">Select</button>
+        <span class="price-tag">From 40</span>
       </div>
       <p class="text-gray-400 text-sm mt-2">Few hours</p>
     </div>
 
-    <!-- Game Thumbnail -->
-    <div class="bg-gray-800 p-4 rounded-xl border-2 border-purple-700 shadow-lg flex flex-col">
-      <h3 class="text-indigo-400 font-bold mb-2">Game Thumbnail</h3>
-      <p class="flex-grow mb-2">1920x1080 graphic.</p>
-      <div class="flex items-center justify-between mt-auto">
-        <span class="price-tag">From 100 (negotiable)</span>
-        <button class="btn btn-purple select-service" data-price="100" data-name="Game Thumbnail">Select</button>
-      </div>
-      <p class="text-red-400 font-bold text-sm mt-2">1-2 Days</p>
-    </div>
-
   </div>
 </section>
 
-<section>
-  <h2 class="text-indigo-400 font-bold mb-2">Add-Ons & Fees</h2>
-  <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+<!-- Zoom Modal -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal-card" id="modalCard"></div>
+</div>
 
-    <!-- complex prop -->
-    <div class="addon-square">
-      <strong>Complex Custom Prop</strong>
-      <small>Detailed imported item.</small>
-      <div>
-        <span class="price-tag yellow">From 5 (depends on how complicated the prop is)</span>
-        <input type="number" min="1" value="1" class="addon-count">
-        <button class="btn btn-purple add-addon" data-price="5" data-name="Complex Prop">Add</button>
-      </div>
-    </div>
-
-    <!-- additional character -->
-    <div class="addon-square">
-      <strong>Additional Character</strong>
-      <small>Extra avatar.</small>
-      <div>
-        <span class="price-tag yellow">From 10</span>
-        <input type="number" min="1" value="1" class="addon-count">
-        <button class="btn btn-purple add-addon" data-price="10" data-name="Additional Character">Add</button>
-      </div>
-    </div>
-
-    <!-- no quantity -->
-    <div class="addon-square">
-      <strong>Detailed Environment</strong>
-      <small>Complex 3D scene.</small>
-      <div>
-        <span class="price-tag yellow">From 10</span>
-        <button class="btn btn-purple add-addon" data-price="10" data-name="Detailed Environment">Add</button>
-      </div>
-    </div>
-
-    <!-- rush -->
-    <div class="addon-square rush">
-      <strong>Rush Fee (24hr)</strong>
-      <small>Guaranteed fast.</small>
-      <div>
-        <span class="price-tag red">100</span>
-        <button class="btn btn-purple add-addon" data-price="100" data-name="Rush Fee">Add</button>
-      </div>
-    </div>
-
-    <!-- commercial separate -->
-    <div class="addon-square" style="border-color:#7c3aed;">
-      <strong>Commercial Use</strong>
-      <small>50% discount applied.</small>
-      <label class="custom-checkbox">
-        <input type="checkbox" id="commercialUse"> Enable
-      </label>
-    </div>
-
-  </div>
-</section>
-
-
-<section>
-  <h2 class="text-indigo-400 font-bold mb-2">How To Order</h2>
-  <div class="order-step">1. Choose your service.</div>
-  <div class="order-step">2. Add your preferred add-ons.</div>
-  <div class="order-step">3. Contact me on Discord/Roblox.</div>
-  <div class="text-center mt-4 flex justify-center gap-4">
-  <!-- Discord button -->
-  <a href="https://discord.gg/invite/sgR842Gj" target="_blank" class="btn btn-purple">
-    Contact on Discord
-  </a>
-
-  <!-- Roblox button -->
-  <a href="https://roblox.com/users/6068424293/profile" target="_blank" class="btn btn-blue">
-    Visit Roblox Profile
-  </a>
-  </div>
-</section>
-
-<section>
-  <h2 class="text-indigo-400 font-bold mb-2">FAQ</h2>
-  <div class="faq-item"><strong>Q:</strong> How long does a render take?<br>A: A few hours to a day.</div>
-  <div class="faq-item"><strong>Q:</strong> Can I request changes?<br>A: Minor revisions only.</div>
-  <div class="faq-item"><strong>Q:</strong> Do you accept large projects?<br>A: Yes, message me.</div>
-</section>
-
-<section>
-  <h2 class="text-red-400 text-center font-bold mb-2">Terms of Service ⚠️</h2>
-  <div class="important-terms">
-    <p><strong class="text-yellow-400">• Payment Policy:</strong> Once paid, the Robux is <span class="red">NOT REFUNDABLE</span> (due to Roblox taxes/time).</p>
-    <p><strong class="text-yellow-400">• Revisions:</strong> One round of minor revisions included. Major changes may cost an additional fee.</p>
-    <p><strong class="text-yellow-400">• Commercial Use:</strong> You get a 50% discount on a commission <strong>ONLY IF YOU ARE REALLY USING IT FOR COMMERCIAL USE. IF YOU ARE CAUGHT LYING, I WILL REPORT YOU.</strong></p>
-    <p><strong class="text-yellow-400">• Credits:</strong> Please credit me when posting the GFX publicly.</p>
-    <p><strong class="text-yellow-400">• Copyright:</strong> All artworks remain my property until fully paid.</p>
-    <p><strong class="text-yellow-400">• Behavior:</strong> I reserve the right to refuse service to anyone abusive or breaking rules.</p>
-    <p><strong class="text-yellow-400">• Delivery:</strong> I may provide files in PNG/JPG only; PSD or source files are extra if requested.</p>
-    <p class="text-center text-gray-400 pt-1 text-xs">Thank you for considering my GFX commissions! I appreciate your support and honesty.</p>
-  </div>
-</section>
-
-</div></div>
-
-<!-- CART PANEL -->
 <div id="cartPanel">
   <h3 class="text-lg font-bold mb-2">🛒 Cart</h3>
   <div id="cartItems"></div>
   <div class="text-right font-bold text-purple-300">Total: <span id="cartTotal">0</span> R$</div>
 </div>
 
+<div id="customCursor"></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
 <script>
+// Cursor
+const customCursor=document.getElementById("customCursor");
 const cursorGlow=document.getElementById("cursorGlow");
-window.addEventListener("mousemove",e=>{
-  cursorGlow.style.left=e.pageX+"px"; cursorGlow.style.top=e.pageY+"px";
+let mouseX=0, mouseY=0, glowX=0, glowY=0;
+
+window.addEventListener("mousemove", e=>{
+  mouseX=e.clientX; mouseY=e.clientY;
+  customCursor.style.left=e.clientX+"px";
+  customCursor.style.top=e.clientY+"px";
 });
 
-/* CART */
-let cart=[];
-const cartItems=document.getElementById("cartItems");
-const cartTotal=document.getElementById("cartTotal");
-const commercial=document.getElementById("commercialUse");
-
-function updateCart(){
-  cartItems.innerHTML="";
-  let total=0;
-
-  cart.forEach(i=>{
-    total+=i.price*i.qty;
-    let div=document.createElement("div");
-    div.className="cart-item";
-    div.innerHTML=`<span>${i.name} x${i.qty}</span><span>${i.price*i.qty} R$</span>`;
-    cartItems.appendChild(div);
-  });
-
-  if(commercial.checked) total*=0.5;
-
-  cartTotal.textContent=total;
+function animateGlow(){
+  glowX += (mouseX - glowX)*0.15;
+  glowY += (mouseY - glowY)*0.15;
+  cursorGlow.style.transform=`translate(${glowX-60}px, ${glowY-60}px)`;
+  requestAnimationFrame(animateGlow);
 }
+animateGlow();
 
-/* Only 1 service */
-const serviceBtns=document.querySelectorAll(".select-service");
-let selectedService=null;
-
-serviceBtns.forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    serviceBtns.forEach(b=>b.classList.remove("highlight-selected"));
-
-    if(selectedService===btn){
-      selectedService=null;
-      cart=cart.filter(i=>i.type!=="service");
-      updateCart();
-      btn.classList.remove("highlight-selected");
-      return;
-    }
-
-    selectedService=btn;
-    btn.classList.add("highlight-selected");
-
-    cart=cart.filter(i=>i.type!=="service");
-    cart.unshift({
-      name:btn.dataset.name,
-      price:parseInt(btn.dataset.price),
-      qty:1,
-      type:"service"
-    });
-
-    updateCart();
-  });
+window.addEventListener("click", e=>{
+  const glow = document.createElement("div");
+  glow.style.position='fixed';
+  glow.style.left=(e.clientX-25)+'px';
+  glow.style.top=(e.clientY-25)+'px';
+  glow.style.width='50px';
+  glow.style.height='50px';
+  glow.style.borderRadius='50%';
+  glow.style.background='rgba(167,139,250,0.5)';
+  glow.style.pointerEvents='none';
+  glow.style.zIndex='99999';
+  glow.style.transition='all 0.5s ease-out';
+  document.body.appendChild(glow);
+  setTimeout(()=>{ glow.style.transform='scale(2)'; glow.style.opacity='0'; },0);
+  setTimeout(()=>document.body.removeChild(glow),500);
 });
 
-/* Add-ons */
-document.querySelectorAll(".add-addon").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    let qtyInput=btn.parentElement.querySelector(".addon-count");
-    let qty=qtyInput?parseInt(qtyInput.value):1;
+// 3D Hover & Modal
+const cards=document.querySelectorAll('.service-card');
+const modalBg=document.getElementById('modalBg');
+const modalCard=document.getElementById('modalCard');
 
-    cart.push({
-      name:btn.dataset.name,
-      price:parseInt(btn.dataset.price),
-      qty:qty,
-      type:"addon"
-    });
-
-    updateCart();
+cards.forEach(card=>{
+  card.addEventListener('mousemove', e=>{
+    const rect=card.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    const y=e.clientY-rect.top;
+    const rotateX = ((y-rect.height/2)/(rect.height/2))*10;
+    const rotateY = ((x-rect.width/2)/(rect.width/2))*10;
+    card.style.transform=`rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+  });
+  card.addEventListener('mouseleave', ()=>card.style.transform='rotateX(0deg) rotateY(0deg) scale(1)');
+  card.addEventListener('click', ()=>{
+    modalCard.innerHTML=card.innerHTML;
+    modalBg.style.display='flex';
+    setTimeout(()=>modalCard.style.transform='scale(1)',10);
   });
 });
-
-commercial.addEventListener("change",updateCart);
+modalBg.addEventListener('click', ()=>{
+  modalCard.style.transform='scale(0)';
+  setTimeout(()=>modalBg.style.display='none',300);
+});
 </script>
 
 </body>
