@@ -345,46 +345,62 @@
         </table>
       </section>
 
-      <section>
-        <h2 class="text-indigo-400 font-bold mb-2">Add-Ons & Fees</h2>
-        <div style="display:flex;gap:0.75rem; flex-wrap:wrap;">
-          <div class="addon-square">
-            <strong>Complex Custom Prop</strong>
-            <small>Detailed items requiring importing.</small>
-            <div>
-              <span class="price-tag yellow">5</span>
-              <input type="number" min="1" value="1" class="item-count">
-              <button class="btn btn-purple btn-sm add-cart" data-price="5">Add To Cart</button>
-            </div>
-          </div>
-          <div class="addon-square">
-            <strong>Additional Character</strong>
-            <small>Extra posed avatar in scene.</small>
-            <div>
-              <span class="price-tag yellow">10</span>
-              <input type="number" min="1" value="1" class="item-count">
-              <button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button>
-            </div>
-          </div>
-          <div class="addon-square">
-            <strong>Detailed Environment</strong>
-            <small>Complex 3D build.</small>
-            <div>
-              <span class="price-tag yellow">10</span>
-              <button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button>
-            </div>
-          </div>
-          <div class="addon-square rush">
-            <strong>Rush Fee (24hr)</strong>
-            <small>Guaranteed 24–48 hours.</small>
-            <div style="display:flex; gap:0.5rem; align-items:center;">
-              <span class="price-tag red">100</span>
-              <button class="btn btn-purple btn-sm add-cart" data-price="100">Add To Cart</button>
-              <label class="custom-checkbox"><input type="checkbox" id="commercialUse"> Commercial Use (50% off)</label>
-            </div>
-          </div>
-        </div>
-      </section>
+<section>
+  <h2 class="text-indigo-400 font-bold mb-2">Add-Ons & Fees</h2>
+  <div style="display:flex;gap:0.75rem; flex-wrap:wrap;">
+
+    <div class="addon-square">
+      <strong>Complex Custom Prop</strong>
+      <small>Detailed items requiring importing.</small>
+      <div>
+        <span class="price-tag yellow">5</span>
+        <input type="number" min="1" value="1" class="item-count">
+        <button class="btn btn-purple btn-sm add-cart" data-price="5">Add To Cart</button>
+      </div>
+    </div>
+
+    <div class="addon-square">
+      <strong>Additional Character</strong>
+      <small>Extra posed avatar in scene.</small>
+      <div>
+        <span class="price-tag yellow">10</span>
+        <input type="number" min="1" value="1" class="item-count">
+        <button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button>
+      </div>
+    </div>
+
+    <div class="addon-square">
+      <strong>Detailed Environment</strong>
+      <small>Complex 3D build.</small>
+      <div>
+        <span class="price-tag yellow">10</span>
+        <button class="btn btn-purple btn-sm add-cart" data-price="10">Add To Cart</button>
+      </div>
+    </div>
+
+    <!-- Rush Fee -->
+    <div class="addon-square rush">
+      <strong>Rush Fee (24hr)</strong>
+      <small>Guaranteed 24–48 hours.</small>
+      <div style="display:flex; gap:0.5rem; align-items:center;">
+        <span class="price-tag red">100</span>
+        <button class="btn btn-purple btn-sm add-cart" data-price="100">Add To Cart</button>
+      </div>
+    </div>
+
+    <!-- NEW: Commercial Use -->
+    <div class="addon-square" style="border:1px solid #7c3aed;">
+      <strong>Commercial Use</strong>
+      <small>50% discount applied to full total.</small>
+      <label class="custom-checkbox" style="margin-top:0.5rem;">
+        <input type="checkbox" id="commercialUse">
+        Enable Commercial Use (50% OFF)
+      </label>
+    </div>
+
+  </div>
+</section>
+
 
       <div style="text-align:center; margin-bottom:1rem;">
         <button id="calcPriceBtn" class="btn btn-purple">Calculate Price</button>
