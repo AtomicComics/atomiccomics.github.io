@@ -177,9 +177,61 @@
 <section>
   <h2 class="text-indigo-400 font-bold mb-2">Add-Ons & Fees</h2>
   <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-    <!-- Existing addon squares here, unchanged -->
+
+    <!-- complex prop -->
+    <div class="addon-square">
+      <strong>Complex Custom Prop</strong>
+      <small>Detailed imported item.</small>
+      <div>
+        <span class="price-tag yellow">5</span>
+        <input type="number" min="1" value="1" class="addon-count">
+        <button class="btn btn-purple add-addon" data-price="5" data-name="Complex Prop">Add</button>
+      </div>
+    </div>
+
+    <!-- additional character -->
+    <div class="addon-square">
+      <strong>Additional Character</strong>
+      <small>Extra avatar.</small>
+      <div>
+        <span class="price-tag yellow">10</span>
+        <input type="number" min="1" value="1" class="addon-count">
+        <button class="btn btn-purple add-addon" data-price="10" data-name="Additional Character">Add</button>
+      </div>
+    </div>
+
+    <!-- no quantity -->
+    <div class="addon-square">
+      <strong>Detailed Environment</strong>
+      <small>Complex 3D scene.</small>
+      <div>
+        <span class="price-tag yellow">10</span>
+        <button class="btn btn-purple add-addon" data-price="10" data-name="Detailed Environment">Add</button>
+      </div>
+    </div>
+
+    <!-- rush -->
+    <div class="addon-square rush">
+      <strong>Rush Fee (24hr)</strong>
+      <small>Guaranteed fast.</small>
+      <div>
+        <span class="price-tag red">100</span>
+        <button class="btn btn-purple add-addon" data-price="100" data-name="Rush Fee">Add</button>
+      </div>
+    </div>
+
+    <!-- commercial separate -->
+    <div class="addon-square" style="border-color:#7c3aed;">
+      <strong>Commercial Use</strong>
+      <small>50% discount applied.</small>
+      <label class="custom-checkbox">
+        <input type="checkbox" id="commercialUse"> Enable
+      </label>
+    </div>
+
   </div>
 </section>
+
 
 <section>
   <h2 class="text-indigo-400 font-bold mb-2">How To Order</h2>
